@@ -9,7 +9,7 @@
       "default": "./lib/index.min.js"
     },
     "./card": {
-      "types": "./types/component/index.d.ts",
+      "types": "./types/component/card/index.d.ts",
       "default": "./lib/component/card/index.min.js"
     }
   },
