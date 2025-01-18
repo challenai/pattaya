@@ -3,6 +3,16 @@
   "module": "lib/index.min.js",
   "version": "0.0.1",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./lib/index.min.js"
+    },
+    "./card": {
+      "types": "./types/component/index.d.ts",
+      "default": "./lib/component/card/index.min.js"
+    }
+  },
   "files": [
     "lib",
     "types"
