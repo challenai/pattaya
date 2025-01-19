@@ -1,36 +1,39 @@
-import type { MeshOptions, ShadowElement } from "@pattaya/depict/graph";
-import { Rectangle } from "@pattaya/pather";
+import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { CardStyleProps } from "./props";
+import { Rectangle } from "@pattaya/pather";
 
 export interface CardProps {
-  x: number,
-  y: number,
   width: number,
   height: number,
   radius: number,
-  style: CardStyleProps,
 };
 
-const getOptsFromTheme = (props: CardStyleProps): MeshOptions => ({
-  fill: props.background,
-  stroke: props.border,
+const setOpts = (style: CardStyleProps): MeshOptions => ({
+  fill: style.background,
+  stroke: style.border,
+  shadowColor: style.shadow,
+  shadowBlur: style.shadowBlur,
 });
 
-export const applyCardStyle = (card: ShadowElement, style: CardStyleProps) => {
-  card.shapes![0].opts = getOptsFromTheme(style);
+const applyStyle = (shape: Mesh[] | undefined, style: CardStyleProps) => {
+  shape![0].opts = setOpts(style);
 };
 
-export const Card = ({ x, y, width, height, radius, style }: CardProps): ShadowElement => {
-  const card: ShadowElement = {
-    x,
-    y,
-    shapes: [
-      {
-        path: Rectangle.RoundAligned(0, 0, width, height, radius),
-        opts: getOptsFromTheme(style),
-      },
-    ],
-    contain: (x, y) => x > 0 && x < width && y > 0 && y < height,
-  };
-  return card;
+export const shape = ({ width, height, radius }: CardProps, style: CardStyleProps): Mesh[] => {
+  return [
+    {
+      path: Rectangle.RoundAligned(0, 0, width, height, radius),
+      opts: setOpts(style),
+    },
+  ];
+};
+
+export const wireframe = ({ width, height, radius }: CardProps): string => {
+  return Rectangle.RoundAligned(0, 0, width, height, radius)
+};
+
+export default {
+  shape,
+  applyStyle,
+  wireframe,
 };
