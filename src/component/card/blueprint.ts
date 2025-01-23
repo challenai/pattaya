@@ -15,7 +15,7 @@ const setOpts = (style: CardStyleProps): MeshOptions => ({
   shadowBlur: style.shadowBlur,
 });
 
-const applyStyle = (shape: Mesh[] | undefined, style: CardStyleProps) => {
+export const applyStyle = (shape: Mesh[] | undefined, style: CardStyleProps) => {
   shape![0].opts = setOpts(style);
 };
 
