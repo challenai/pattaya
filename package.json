@@ -28,7 +28,7 @@
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "@pattaya/depict": "^0.5.1",
+    "@pattaya/depict": "^0.5.3",
     "@pattaya/pather": "^1.0.1"
   },
   "devDependencies": {
