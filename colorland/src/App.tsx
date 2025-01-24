@@ -8,14 +8,9 @@ function App() {
   return (
     <>
       <GraphContainer count={count} />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <p className="read-the-docs">
-        hello, world
-      </p>
+      <button className="btn" onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
     </>
   )
 }
