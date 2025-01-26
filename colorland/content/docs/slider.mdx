@@ -1,0 +1,39 @@
+---
+title: Slider
+description: Sliders are used to control progress
+---
+import Graph from "../../graph";
+import { basic } from "./slider";
+
+## Basic
+
+Example of a slider.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: slider.blueprint.shape({
+        totalLength: 200, slideLength: 120, barWidth: 3, slideWidth: 3, radius: 6, style: {
+          barBackground: palette.grotto,
+          barBorder: palette.grotto,
+          buttonBackground: palette.flat,
+          buttonBorder: palette.navy,
+          slideBackground: palette.navy,
+          slideBorder: palette.navy,
+          buttonBorderWidth: 4,
+        }
+      }),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={basic} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.
