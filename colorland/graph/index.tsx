@@ -6,8 +6,8 @@ import { LayerOptions, ShadowElement } from "@pattaya/depict/graph";
 
 export interface GraphProps {
   styles: CSSProperties;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   options: LayerOptions[];
   layers: ShadowElement[][];
 };
@@ -23,7 +23,7 @@ function Graph({ width, height, layers, options, styles }: GraphProps) {
       if (canvas === null) return;
       d = new NonWorkerDepict({
         root: canvas,
-        maxLayers: layers.length,
+        maxLayers: layers.length || 1,
         offscreenCanvas: true
       });
       setGraph(d);
@@ -31,6 +31,7 @@ function Graph({ width, height, layers, options, styles }: GraphProps) {
 
       options.forEach((opt, idx) => d?.graph.updateLayerOptions(idx, opt));
       d.graph.resetGraph(layers);
+      d.graph.updateQueue
     }
 
     return () => d?.destroy();
@@ -41,9 +42,10 @@ function Graph({ width, height, layers, options, styles }: GraphProps) {
       style={{
         ...styles,
         position: "relative",
-        width: `${width}px`,
-        height: `${height}px`,
+        width: width ? `${width}px` : "100%",
+        height: height ? `${height}px` : "100%",
       }}
+      className="bg-fd-secondary/50 rounded-lg border"
       ref={rootRef}
     ></div>
   )
