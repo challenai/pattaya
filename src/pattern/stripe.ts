@@ -52,11 +52,23 @@ export const drawStripe = (
     segements,
   }: StripeProps,
 ) => {
-  if (backgroundColor) ctx.fillStyle = backgroundColor;
-  ctx.fillRect(0, 0, width, height);
+  ctx.save();
 
+  const p = new Path2D();
+  p.rect(0, 0, width, height);
+  ctx.clip(p);
+
+  if (backgroundColor) {
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  ctx.lineWidth = lineWidth;
+  if (lineColor) ctx.strokeStyle = lineColor;
+  if (segements) ctx.setLineDash(segements);
   const unitWidth = lineWidth + margin;
   const num = (width + Math.abs(offset)) / unitWidth + 2;
+  ctx.beginPath();
   for (let i = 0; i < num; i++) {
     if (offset < 0) {
       ctx.moveTo(i * unitWidth + offset, 0);
@@ -65,9 +77,8 @@ export const drawStripe = (
       ctx.moveTo(i * unitWidth, 0);
       ctx.lineTo(i * unitWidth - offset, height);
     }
-    ctx.lineWidth = lineWidth;
-    if (lineColor) ctx.strokeStyle = lineColor;
-    if (segements) ctx.setLineDash(segements);
-    ctx.stroke();
   }
+  ctx.stroke();
+
+  ctx.restore();
 };
