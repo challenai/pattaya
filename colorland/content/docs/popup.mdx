@@ -1,0 +1,66 @@
+---
+title: Popup
+description: A popup to hold content
+---
+import Graph from "../../graph";
+import { basic, custom } from "./card";
+
+## Basic
+
+Example of a basic popup.
+
+```js
+const muted = { border: "#999", background: "#fff", shadow: "#fff", shadowBlur: 0 };
+
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: card.blueprint.shape({ width: 120, height: 90, radius: 9 }, muted),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={basic} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+
+## custom styles
+
+Example of a popup using custom styles.
+
+```js
+const muted = { border: "#999", background: "#fff", shadow: "#fff", shadowBlur: 0 };
+
+const active = { border: "#999", background: "#333", shadow: "#fff", shadowBlur: 0 };
+
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: card.blueprint.shape({ width: 120, height: 90, radius: 9 }, muted),
+      contain(x, y) {
+        return x > 0 && y > 0 && x < 120 && y < 90;
+      },
+      onMouseenter(render, x, y, mouseX, mouseY) {
+        card.blueprint.applyStyle(this.shapes, active);
+        render();
+      },
+      onMouseleave(render, x, y, mouseX, mouseY) {
+        card.blueprint.applyStyle(this.shapes, muted);
+        render();
+      },
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+Hover the card to trigger an event.
+<Graph layers={custom} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.
