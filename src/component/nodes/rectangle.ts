@@ -15,7 +15,7 @@ function setOpts(style: NodeStyleProps): MeshOptions {
     shadowColor: style.shadow,
     shadowBlur: style.shadowBlur,
   };
-}
+};
 
 export function applyStyle(shape: Mesh[] | undefined, style: NodeStyleProps) {
   shape![0].opts = setOpts(style);
@@ -32,9 +32,9 @@ export function shapes(props: RectangleProps, style: NodeStyleProps): Mesh[] {
 
 export function wireframe({ width, height, radius }: RectangleProps): string {
   if (radius === 0) {
-    return Rectangle.BasicAligned(0, 0, width, height);
+    return Rectangle.Basic(0, 0, width, height);
   }
-  return Rectangle.RoundAligned(0, 0, width, height, radius);
+  return Rectangle.Round(0, 0, width, height, radius);
 };
 
 export default {

@@ -13,7 +13,7 @@ function setOpts(style: NodeStyleProps): MeshOptions {
     shadowColor: style.shadow,
     shadowBlur: style.shadowBlur,
   };
-}
+};
 
 export function applyStyle(shape: Mesh[] | undefined, style: NodeStyleProps) {
   shape![0].opts = setOpts(style);
