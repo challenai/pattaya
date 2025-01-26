@@ -7,10 +7,7 @@ export const basic: ShadowElement[][] = [
     {
       x: 120,
       y: 90,
-      postRenderCallback(ctx, offscreen) {
-        const p = new Path2D();
-        p.rect(0, 0, 100, 100);
-        ctx.clip(p);
+      postRenderCallback(ctx) {
         stripe.drawStripe(ctx, {
           width: 100,
           height: 100,
@@ -19,7 +16,6 @@ export const basic: ShadowElement[][] = [
           offset: -100,
           segements: [10, 6],
           lineColor: "#ccf",
-          backgroundColor: "transparent",
         });
       }
     },
