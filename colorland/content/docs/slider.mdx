@@ -3,7 +3,7 @@ title: Slider
 description: Sliders are used to control progress
 ---
 import Graph from "../../graph";
-import { basic } from "./slider";
+import { basic, background } from "./slider";
 
 ## Basic
 
@@ -15,24 +15,14 @@ const layers = [
     {
       x: 180,
       y: 120,
-      shapes: slider.blueprint.shape({
-        totalLength: 200, slideLength: 120, barWidth: 3, slideWidth: 3, radius: 6, style: {
-          barBackground: palette.grotto,
-          barBorder: palette.grotto,
-          buttonBackground: palette.flat,
-          buttonBorder: palette.navy,
-          slideBackground: palette.navy,
-          slideBorder: palette.navy,
-          buttonBorderWidth: 4,
-        }
-      }),
+      shapes: slider.blueprint.shape({ totalLength: 200, slideLength: 120, barWidth: 3, slideWidth: 3, radius: 6, style: sliderStyle.normal }),
     },
   ],
 ];
 graph.updateQueue(0, layers);
 ```
 
-<Graph layers={basic} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph layers={basic} options={[]} height={400} styles={{ marginBottom: "32px", backgroundColor: background }} />
 
 ## API
 

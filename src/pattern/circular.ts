@@ -1,27 +1,31 @@
 /**
- * Stripe Propertities
+ * Circular Propertities
  */
-export interface StripeProps {
+export interface CircularProps {
   /**
-   * width of the stripe
+   * width of the pattern
    */
   width: number;
   /**
-   * height of the stripe
+   * height of the pattern
    */
   height: number;
   /**
-   * line width of the stripe
+   * line width of the pattern
    */
   lineWidth: number;
   /**
-   * margin between lines of the stripe
+   * margin between lines of the circular pattern
    */
   margin: number;
   /**
-   * offset controls the stripe slope
+   * offset x
    */
-  offset: number;
+  offsetX: number;
+  /**
+   * offset y
+   */
+  offsetY: number;
   /**
    * line color
    */
@@ -37,20 +41,21 @@ export interface StripeProps {
 };
 
 /**
- * draw a stripe
+ * draw a circular pattern
  */
-export const drawStripe = (
+export const drawCircular = (
   ctx: OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D,
   {
     width,
     height,
     lineWidth,
     margin,
-    offset,
+    offsetX,
+    offsetY,
     lineColor,
     backgroundColor,
     segements,
-  }: StripeProps,
+  }: CircularProps,
 ) => {
   ctx.save();
 
@@ -63,20 +68,25 @@ export const drawStripe = (
     ctx.fillRect(0, 0, width, height);
   }
 
+  ctx.translate(offsetX, offsetY);
   ctx.lineWidth = lineWidth;
   if (lineColor) ctx.strokeStyle = lineColor;
   if (segements) ctx.setLineDash(segements);
-  const unitWidth = lineWidth + margin;
-  const num = (width + Math.abs(offset)) / unitWidth + 2;
+
+  const x1 = Math.abs(offsetX);
+  const y1 = Math.abs(offsetY);
+  const x2 = Math.abs(offsetX - width);
+  const y2 = Math.abs(offsetY - height);
+  const minR = Math.min(x1, y1, x2, y2);
+  const mx = Math.max(x1, x2);
+  const my = Math.max(y1, y2);
+  const maxR = Math.sqrt(mx * mx + my * my) + margin;
+  let r = minR - minR % margin;
   ctx.beginPath();
-  for (let i = 0; i < num; i++) {
-    if (offset < 0) {
-      ctx.moveTo(i * unitWidth + offset, 0);
-      ctx.lineTo(i * unitWidth, height);
-    } else {
-      ctx.moveTo(i * unitWidth, 0);
-      ctx.lineTo(i * unitWidth - offset, height);
-    }
+  while (r <= maxR) {
+    ctx.arc(0, 0, r, 0, 2 * Math.PI);
+    r += margin;
+    ctx.moveTo(r, 0);
   }
   ctx.stroke();
 
