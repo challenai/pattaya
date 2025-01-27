@@ -1,0 +1,64 @@
+---
+title: Nodes
+description: Basic shapes include circle, rectangle, diamond and more...
+---
+import Graph from "../../graph";
+import { circle, rectangle, diamond, background } from "./nodes";
+
+## Circle
+
+Example of a cricle.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: nodes.circle.shapes({ radius: 64 }, nodeStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={circle} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+
+## Diamond
+
+Example of a diamond.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: nodes.diamond.shapes({ width: 120, height: 90 }, nodeStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={diamond} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## rectangle
+
+Example of a rectangle.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: nodes.rectangle.shapes({ width: 120, height: 90, radius: 9 }, nodeStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={rectangle} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
