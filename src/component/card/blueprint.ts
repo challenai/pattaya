@@ -19,7 +19,7 @@ export const applyStyle = (shape: Mesh[] | undefined, style: CardStyleProps) => 
   shape![0].opts = setOpts(style);
 };
 
-export const shape = ({ width, height, radius }: CardProps, style: CardStyleProps): Mesh[] => {
+export const shapes = ({ width, height, radius }: CardProps, style: CardStyleProps): Mesh[] => {
   return [
     {
       path: Rectangle.RoundAligned(0, 0, width, height, radius),
@@ -33,7 +33,7 @@ export const wireframe = ({ width, height, radius }: CardProps): string => {
 };
 
 export default {
-  shape,
+  shapes,
   applyStyle,
   wireframe,
 };

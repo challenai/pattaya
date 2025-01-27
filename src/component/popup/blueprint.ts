@@ -38,7 +38,7 @@ export const applyStyle = (shape: Mesh[] | undefined, style: PopupStyleProps) =>
   shape![0].opts = setOpts(style);
 };
 
-export const shape = ({ width, height, radius, triangleHeight, triangleWidth }: PopupProps, style: PopupStyleProps): Mesh[] => {
+export const shapes = ({ width, height, radius, triangleHeight, triangleWidth }: PopupProps, style: PopupStyleProps): Mesh[] => {
   return [
     {
       path: build(width, height, radius, triangleWidth, triangleHeight),
@@ -52,7 +52,7 @@ export const wireframe = ({ width, height, radius, triangleHeight, triangleWidth
 };
 
 export default {
-  shape,
+  shapes,
   applyStyle,
   wireframe,
 };

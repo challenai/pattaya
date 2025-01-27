@@ -8,7 +8,6 @@ export interface SliderProps {
   barWidth: number;
   slideWidth: number;
   radius: number;
-  style: SliderStyleProps;
 };
 
 const setSlideOpts = (style: SliderStyleProps): MeshOptions => ({
@@ -33,7 +32,7 @@ export const applyStyle = (shape: Mesh[] | undefined, style: SliderStyleProps) =
   shape![2].opts = setButtonOpts(style);
 };
 
-export const shape = ({ totalLength, slideLength, slideWidth, barWidth, radius, style }: SliderProps): Mesh[] => {
+export const shapes = ({ totalLength, slideLength, slideWidth, barWidth, radius }: SliderProps, style: SliderStyleProps): Mesh[] => {
   return [
     // 0. bar
     {
@@ -54,6 +53,6 @@ export const shape = ({ totalLength, slideLength, slideWidth, barWidth, radius, 
 };
 
 export default {
-  shape,
+  shapes,
   applyStyle,
 };
