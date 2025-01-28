@@ -28,7 +28,7 @@ export const ring: ShadowElement[][] = [
       x: 120,
       y: 90,
       postRenderCallback(ctx) {
-        r.drawCircular(ctx, {
+        r.drawRing(ctx, {
           width: 100,
           height: 100,
           lineWidth: 1,
@@ -48,7 +48,7 @@ export const grid: ShadowElement[][] = [
       x: 120,
       y: 90,
       postRenderCallback(ctx) {
-        c.drawCircular(ctx, {
+        r.drawRing(ctx, {
           width: 100,
           height: 100,
           lineWidth: 1,

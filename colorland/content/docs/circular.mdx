@@ -3,7 +3,7 @@ title: Circular
 description: Draw circular pattern
 ---
 import Graph from "../../graph";
-import { sector, pie } from "./circular";
+import { sector, pie, background } from "./circular";
 
 ## Sector
 
@@ -22,7 +22,7 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph layers={sector} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph layers={sector} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
 
 ## Pie
 
@@ -41,4 +41,4 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph layers={pie} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph layers={pie} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
