@@ -1,8 +1,11 @@
+export * as arrow from "./component/arrow";
 export * as card from "./component/card";
 export * as popup from "./component/popup";
 export * as slider from "./component/slider";
 export * as nodes from "./component/nodes";
+export * as circular from "./component/circular";
+export * as pattern from "./pattern";
 export * as stripe from "./pattern/stripe";
-export * as circular from "./pattern/circular";
+export * as ring from "./pattern/ring";
 export * as theme from "./theme";
 export * as mayk from "./theme/mayk";

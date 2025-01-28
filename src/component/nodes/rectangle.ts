@@ -1,6 +1,6 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyleProps } from "./props";
-import { Rectangle } from "@pattaya/pather";
+import { rectangle } from "impressionist";
 
 export interface RectangleProps {
   width: number;
@@ -32,9 +32,9 @@ export function shapes(props: RectangleProps, style: NodeStyleProps): Mesh[] {
 
 export function wireframe({ width, height, radius }: RectangleProps): string {
   if (radius === 0) {
-    return Rectangle.Basic(0, 0, width, height);
+    return rectangle.basic(0, 0, width, height);
   }
-  return Rectangle.Round(0, 0, width, height, radius);
+  return rectangle.round(0, 0, width, height, radius);
 };
 
 export default {

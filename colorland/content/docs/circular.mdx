@@ -3,36 +3,42 @@ title: Circular
 description: Draw circular pattern
 ---
 import Graph from "../../graph";
-import { basic } from "./circular";
+import { sector, pie, background } from "./circular";
 
-## Basic
+## Sector
 
-Example of a circular pattern.
+Example of a sector.
 
 ```js
 const layers = [
   [
-  [
     {
-      x: 120,
-      y: 90,
-      postRenderCallback(ctx) {
-        circular.drawCircular(ctx, {
-          width: 100,
-          height: 100,
-          lineWidth: 1,
-          margin: 9,
-          offsetX: -20,
-          offsetY: -20,
-          segements: undefined,
-          lineColor: "#ccf",
-          backgroundColor: "transparent",
-        });
-      }
+      x: 180,
+      y: 220,
+      shapes: c.sector.shapes({ radius0: 64, radius1: 96, start: 60, end: 120 }, circularStyle.normal),
     },
   ],
 ];
 graph.updateQueue(0, layers);
 ```
 
-<Graph layers={basic} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph layers={sector} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Pie
+
+Example of a pie.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 220,
+      shapes: c.pie.shapes({ radius: 72, start: 30, end: 60 }, circularStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={pie} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />

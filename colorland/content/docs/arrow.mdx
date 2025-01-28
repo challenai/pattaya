@@ -1,0 +1,131 @@
+---
+title: Arrow
+description: Different styles of arrow tops.
+---
+import Graph from "../../graph";
+import { basic, background, triangle, vee, dome, blunt, bullet } from "./arrow";
+
+## Basic Arrow
+
+Example of a basic card.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.basic.shapes({ width: 16, height: 20 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={basic} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Vee Arrow
+
+Example of a vee style arrow.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.vee.shapes({ width: 16, low: -6, high: 12 }, arrowStyle.normal),
+    },
+    {
+      x: 180,
+      y: 240,
+      shapes: arrow.vee.shapes({ width: 12, low: 6, high: 18 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={vee} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Triangle Arrow
+
+Example of a triangle style arrow.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.triangle.shapes({ width: 16, height: 20 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={triangle} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Bullet Arrow
+
+Example of a bullet style arrow.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.bullet.shapes({ width: 12, height: 18 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={bullet} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Blunt Arrow
+
+Example of a blunt style arrow.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.blunt.shapes({ width: 16, low: 12, high: 24 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={blunt} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+
+## Dome Arrow
+
+Example of a dome style arrow.
+
+```js
+const layers = [
+  [
+    {
+      x: 180,
+      y: 120,
+      shapes: arrow.dome.shapes({ width: 16, low: 12 }, arrowStyle.normal),
+    },
+  ],
+];
+graph.updateQueue(0, layers);
+```
+
+<Graph layers={dome} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.

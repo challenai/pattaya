@@ -1,5 +1,5 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
-import { Circle, Rectangle } from "@pattaya/pather";
+import { circle, rectangle } from "impressionist";
 import type { SliderStyleProps } from "./props";
 
 export interface SliderProps {
@@ -36,17 +36,17 @@ export const shapes = ({ totalLength, slideLength, slideWidth, barWidth, radius 
   return [
     // 0. bar
     {
-      path: Rectangle.BasicAligned(slideLength, -barWidth / 2, totalLength, barWidth),
+      path: rectangle.basicAligned(slideLength, -barWidth / 2, totalLength, barWidth),
       opts: setBarOpts(style),
     },
     // 1. slide
     {
-      path: Rectangle.BasicAligned(0, -slideWidth / 2, slideLength, slideWidth),
+      path: rectangle.basicAligned(0, -slideWidth / 2, slideLength, slideWidth),
       opts: setSlideOpts(style),
     },
     // 2. button
     {
-      path: Circle.Basic(slideLength, 0, radius),
+      path: circle.basic(slideLength, 0, radius),
       opts: setButtonOpts(style),
     },
   ];

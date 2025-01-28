@@ -1,6 +1,6 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyleProps } from "./props";
-import { Circle } from "@pattaya/pather";
+import { circle } from "impressionist";
 
 export interface CircleProps {
   radius: number;
@@ -29,7 +29,7 @@ export function shapes(props: CircleProps, style: NodeStyleProps): Mesh[] {
 };
 
 export function wireframe({ radius }: CircleProps): string {
-  return Circle.Basic(0, 0, radius);
+  return circle.basic(0, 0, radius);
 };
 
 export default {
