@@ -3,6 +3,7 @@ export * as card from "./component/card";
 export * as popup from "./component/popup";
 export * as slider from "./component/slider";
 export * as nodes from "./component/nodes";
+export * as circular from "./component/circular";
 export * as pattern from "./pattern";
 export * as stripe from "./pattern/stripe";
 export * as ring from "./pattern/ring";
