@@ -1,6 +1,6 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyleProps } from "./props";
-import { Rectangle } from "@pattaya/pather";
+import { rectangle } from "impressionist";
 
 export interface DiamondProps {
   width: number;
@@ -30,7 +30,7 @@ export function shapes(props: DiamondProps, style: NodeStyleProps): Mesh[] {
 };
 
 export function wireframe({ width, height }: DiamondProps): string {
-  return Rectangle.Diamond(0, 0, width, height);
+  return rectangle.diamond(0, 0, width, height);
 };
 
 export default {
