@@ -1,6 +1,6 @@
 'use client'
 import { ShadowElement } from "@pattaya/depict/graph";
-import { stripe as s, circular as c } from "@pattaya/pattaya";
+import { stripe as s, ring as r } from "@pattaya/pattaya";
 
 export const stripe: ShadowElement[][] = [
   [
@@ -22,13 +22,13 @@ export const stripe: ShadowElement[][] = [
   ],
 ];
 
-export const circular: ShadowElement[][] = [
+export const ring: ShadowElement[][] = [
   [
     {
       x: 120,
       y: 90,
       postRenderCallback(ctx) {
-        c.drawCircular(ctx, {
+        r.drawCircular(ctx, {
           width: 100,
           height: 100,
           lineWidth: 1,
