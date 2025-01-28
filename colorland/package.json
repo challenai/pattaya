@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pattaya/depict": "^0.5.3",
-    "@pattaya/pattaya": "^0.0.4",
+    "@pattaya/pattaya": "^0.0.5",
     "fumadocs-core": "14.7.7",
     "fumadocs-mdx": "11.3.1",
     "fumadocs-ui": "14.7.7",
