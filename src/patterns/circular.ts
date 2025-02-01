@@ -1,7 +1,7 @@
 /**
  * Circular Propertities
  */
-export interface RingProps {
+export interface CircularProps {
   /**
    * width of the pattern
    */
@@ -43,7 +43,7 @@ export interface RingProps {
 /**
  * draw a circular pattern
  */
-export const drawRing = (
+export const drawCircular = (
   ctx: OffscreenCanvasRenderingContext2D | CanvasRenderingContext2D,
   {
     width,
@@ -55,7 +55,7 @@ export const drawRing = (
     lineColor,
     backgroundColor,
     segements,
-  }: RingProps,
+  }: CircularProps,
 ) => {
   ctx.save();
 
