@@ -1,4 +1,4 @@
-export interface CircularStyleProps {
+export interface CircularStyles {
   border: string;
   background: string;
   shadow: string;

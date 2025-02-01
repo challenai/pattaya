@@ -1,4 +1,4 @@
-export interface PopupStyleProps {
+export interface NodeStyles {
   border: string;
   background: string;
   shadow: string;

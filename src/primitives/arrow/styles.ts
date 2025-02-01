@@ -1,4 +1,4 @@
-export interface ArrowStyleProps {
+export interface ArrowStyles {
   border: string;
   background: string;
 };

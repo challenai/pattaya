@@ -1,12 +1,12 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
-import type { NodeStyleProps } from "./props";
+import type { NodeStyles } from "./styles";
 import { circle } from "impressionist";
 
 export interface CircleProps {
   radius: number;
 };
 
-function setOpts(style: NodeStyleProps): MeshOptions {
+function toOpts(style: NodeStyles): MeshOptions {
   return {
     fill: style.background,
     stroke: style.border,
@@ -15,15 +15,15 @@ function setOpts(style: NodeStyleProps): MeshOptions {
   };
 };
 
-export function applyStyle(shape: Mesh[] | undefined, style: NodeStyleProps) {
-  shape![0].opts = setOpts(style);
+export function applyStyle(shape: Mesh[] | undefined, style: NodeStyles) {
+  shape![0].opts = toOpts(style);
 };
 
-export function shapes(props: CircleProps, style: NodeStyleProps): Mesh[] {
+export function shapes(props: CircleProps, style: NodeStyles): Mesh[] {
   return [
     {
       path: wireframe(props),
-      opts: setOpts(style),
+      opts: toOpts(style),
     },
   ];
 };
@@ -34,6 +34,7 @@ export function wireframe({ radius }: CircleProps): string {
 
 export default {
   shapes,
-  applyStyle,
   wireframe,
+  toOpts,
+  applyStyle,
 };
