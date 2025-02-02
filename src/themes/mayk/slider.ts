@@ -1,8 +1,7 @@
-import { background, palette } from "./palette";
+export { default as background } from "./background";
+import palette from "./palette";
 
-export const sliderBackground = background;
-
-export const sliderStyle = {
+export const styles = {
   normal: {
     barBackground: palette.grotto,
     barBorder: palette.grotto,
@@ -12,9 +11,4 @@ export const sliderStyle = {
     slideBorder: palette.navy,
     buttonBorderWidth: 4,
   },
-};
-
-export default {
-  style: sliderStyle,
-  background,
 };

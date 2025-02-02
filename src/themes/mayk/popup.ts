@@ -1,8 +1,7 @@
-import { background, palette } from "./palette";
+export { default as background } from "./background";
+import palette from "./palette";
 
-export const popupBackground = background;
-
-export const popupStyle = {
+export const styles = {
   normal: {
     border: palette.grotto,
     background: palette.white,
@@ -15,9 +14,4 @@ export const popupStyle = {
     shadow: palette.white,
     shadowBlur: 0,
   },
-};
-
-export default {
-  style: popupStyle,
-  background,
 };

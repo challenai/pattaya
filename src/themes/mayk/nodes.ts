@@ -1,8 +1,7 @@
-import { background, palette } from "./palette";
+export { default as background } from "./background";
+import palette from "./palette";
 
-export const cardBackground = background;
-
-export const nodeStyle = {
+export const styles = {
   normal: {
     border: palette.grotto,
     background: palette.white,
@@ -15,9 +14,4 @@ export const nodeStyle = {
     shadow: palette.white,
     shadowBlur: 0,
   },
-};
-
-export default {
-  style: nodeStyle,
-  background,
 };

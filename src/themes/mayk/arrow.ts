@@ -1,8 +1,7 @@
-import { background, palette } from "./palette";
+export { default as background } from "./background";
+import palette from "./palette";
 
-export const arrowBackground = background;
-
-export const arrowStyle = {
+export const styles = {
   normal: {
     border: palette.baby,
     background: palette.white,
@@ -11,9 +10,4 @@ export const arrowStyle = {
     border: palette.navy,
     background: palette.white,
   },
-};
-
-export default {
-  style: arrowStyle,
-  background,
 };

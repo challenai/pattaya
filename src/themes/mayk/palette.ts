@@ -1,4 +1,4 @@
-export const palette = {
+const palette = {
   white: "#FFFFFF",
   baby: "#BFD7ED",
   grotto: "#60A3D9",
@@ -8,9 +8,4 @@ export const palette = {
   comp2: "#FAFBFF",
 };
 
-export const background = palette.white;
-
-export default {
-  palette,
-  background,
-};
+export default palette;
