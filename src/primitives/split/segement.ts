@@ -3,9 +3,10 @@ import type { SplitStyles } from "./styles";
 import { rectangle } from "impressionist";
 
 export interface SegementProps {
-  units: number[];
-  size: number;
-  vertical?: boolean;
+  offsets: number[];
+  width: number;
+  height: number;
+  vertical: boolean;
   radius: number;
 };
 
@@ -29,34 +30,29 @@ export function applyStyle(shape: Mesh[] | undefined, style: SplitStyles) {
   shape![1].opts = toSeperatorOpts(style);
 }
 
-export function shapes({ units, size, vertical, radius }: SegementProps, styles: SplitStyles): Mesh[] {
+export function shapes({ width, height, offsets, vertical, radius }: SegementProps, styles: SplitStyles): Mesh[] {
   const result: Mesh[] = [];
-  const sum = units.reduce((pv: number, cv: number) => pv + cv);
-  let width, height;
-  if (vertical) {
-    width = size;
-    height = sum;
-  } else {
-    width = sum;
-    height = size;
-  }
   const rect = radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height);
   result.push({
     path: rect,
     opts: toBoxOpts(styles),
   });
-  let offset = 0.5;
   let path = "";
-  for (let i = 0; i < units.length - 1; i++) {
-    offset += units[i];
+  for (let offset of offsets) {
     if (vertical) {
-      path += `M0 ${offset}L${size} ${offset}`;
+      if (offset < height) {
+        offset += 0.5;
+        path += `M0 ${offset}L${width} ${offset}`;
+      }
     } else {
-      path += `M${offset} 0L${offset} ${size}`;
+      if (offset < width) {
+        offset += 0.5;
+        path += `M${offset} 0L${offset} ${height}`;
+      }
     }
   }
   result.push({
-    path,
+    path: path,
     opts: toSeperatorOpts(styles),
   });
   return result;
