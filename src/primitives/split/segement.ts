@@ -6,8 +6,8 @@ export interface SegementProps {
   offsets: number[];
   width: number;
   height: number;
-  vertical: boolean;
-  radius: number;
+  vertical?: boolean;
+  radius?: number;
 };
 
 export function toBoxOpts(style: SplitStyles): MeshOptions {

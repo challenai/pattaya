@@ -12,7 +12,7 @@ export interface GridProps {
   height: number;
   units: GridUnit[];
   vertical?: boolean;
-  radius: number;
+  radius?: number;
 };
 
 export function toBoxOpts(style: SplitStyles): MeshOptions {
