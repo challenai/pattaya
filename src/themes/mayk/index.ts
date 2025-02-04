@@ -5,3 +5,4 @@ export * as popup from "./popup";
 export * as slider from "./slider";
 export * as nodes from "./nodes";
 export * as circular from "./circular";
+export * as split from "./split";
