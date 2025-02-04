@@ -23,8 +23,7 @@ export function shapes(points: Point[], style: LineStyles): Mesh[] {
 };
 
 export function wireframe(points: Point[]): string {
-  const points_ = points.map((p: Point) => [p.x, p.y]);
-  return line.fold(points_);
+  return line.fold(points);
 };
 
 export default {
