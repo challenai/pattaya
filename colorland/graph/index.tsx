@@ -2,19 +2,19 @@
 
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { NonWorkerDepict } from "@pattaya/depict/nonworker";
-import { LayerOptions, ShadowElement } from "@pattaya/depict/graph";
+import { Graph } from "@pattaya/depict/graph";
 
 export interface GraphProps {
   styles: CSSProperties;
   width?: number;
   height?: number;
-  options: LayerOptions[];
-  layers: ShadowElement[][];
+  maxLayers: number;
+  graph: Graph;
 };
 
-function Graph({ width, height, layers, options, styles }: GraphProps) {
+function GraphContainer({ width, height, styles, maxLayers, graph }: GraphProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [depict, setGraph] = useState<NonWorkerDepict | undefined>(undefined);
+  const [depict, setDepict] = useState<NonWorkerDepict | undefined>(undefined);
 
   useEffect(() => {
     let d = depict;
@@ -23,15 +23,12 @@ function Graph({ width, height, layers, options, styles }: GraphProps) {
       if (canvas === null) return;
       d = new NonWorkerDepict({
         root: canvas,
-        maxLayers: layers.length || 1,
-        offscreenCanvas: true
+        maxLayers,
+        graph,
+        offscreenCanvas: true,
       });
-      setGraph(d);
+      setDepict(d);
       d.start();
-
-      options.forEach((opt, idx) => d?.graph.updateLayerOptions(idx, opt));
-      d.graph.resetGraph(layers);
-      d.graph.updateQueue
     }
 
     return () => d?.destroy();
@@ -51,4 +48,4 @@ function Graph({ width, height, layers, options, styles }: GraphProps) {
   )
 };
 
-export default Graph;
+export default GraphContainer;
