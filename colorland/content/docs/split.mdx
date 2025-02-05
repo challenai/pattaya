@@ -1,0 +1,36 @@
+---
+title: Split
+description: Split the background to Segements, Grids
+---
+import Graph from "@/graph";
+import { segementGraph, gridGraph, background } from "./split";
+
+## Segement
+
+Example of a segement.
+
+```js
+graph.onReady(() => {
+  const btn = button.basic.TextButton(240, 180, { text: "click me", radius: 8, styles, textBoundingBox: graph.boundingBox.bind(graph) });
+  graph.resetGraph([[btn]]);
+});
+```
+
+<Graph height={400} graph={segementGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## Grid
+
+Example of a grid.
+
+```js
+graph.onReady(() => {
+  const btn = button.basic.TextButton(240, 180, { text: "click me", radius: 8, styles, textBoundingBox: graph.boundingBox.bind(graph) });
+  graph.resetGraph([[btn]]);
+});
+```
+
+<Graph height={400} graph={gridGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.

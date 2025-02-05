@@ -1,4 +1,4 @@
 export interface ArrowStyles {
-  border: string;
-  background: string;
+  border?: string;
+  background?: string;
 };

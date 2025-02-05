@@ -1,0 +1,23 @@
+---
+title: Button
+description: Buttons
+---
+import Graph from "@/graph";
+import { graph, background } from "./button";
+
+## TextButton
+
+Example of a button with text.
+
+```js
+graph.onReady(() => {
+  const btn = button.basic.TextButton(240, 180, { text: "click me", radius: 8, styles, textBoundingBox: graph.boundingBox.bind(graph) });
+  graph.resetGraph([[btn]]);
+});
+```
+
+<Graph height={400} graph={graph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.

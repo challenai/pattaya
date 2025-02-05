@@ -8,11 +8,16 @@ export interface BluntProps {
   high: number;
 };
 
-export function toOpts(style: ArrowStyles): MeshOptions {
-  return {
-    fill: style.background,
-    stroke: style.border,
-  };
+export function toOpts(styles: ArrowStyles): MeshOptions {
+  const opts: MeshOptions = {};
+  if (styles.background) opts.fill = styles.background;
+  if (styles.border) {
+    opts.border = true;
+    opts.stroke = styles.border;
+  } else {
+    opts.border = false;
+  }
+  return opts;
 };
 
 export function applyStyle(shape: Mesh[] | undefined, style: ArrowStyles) {

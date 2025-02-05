@@ -1,9 +1,11 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { arrow, theme } from "@pattaya/pattaya";
+import { arrow } from "@pattaya/pattaya/primitives";
+import { mayk } from "@pattaya/pattaya/themes";
 
-export const background = theme.mayk.arrow.arrowBackground;
-const styles = theme.mayk.arrow.arrowStyle;
+export const background = mayk.arrow.background;
+
+const styles = mayk.arrow.styles;
 
 export const bGraph = new Graph();
 bGraph.onReady(() => {

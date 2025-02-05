@@ -2,43 +2,35 @@
 title: Circular
 description: Draw circular pattern
 ---
-import Graph from "../../graph";
-import { sector, pie, background } from "./circular";
+import Graph from "@/graph";
+import { sGraph, pGraph, background } from "./circular";
 
 ## Sector
 
 Example of a sector.
 
 ```js
-const layers = [
-  [
-    {
-      x: 180,
-      y: 220,
-      shapes: c.sector.shapes({ radius0: 64, radius1: 96, start: 60, end: 120 }, circularStyle.normal),
-    },
-  ],
-];
-graph.updateQueue(0, layers);
+const n = {
+  x: 180,
+  y: 220,
+  shapes: c.sector.shapes({ radius0: 64, radius1: 96, start: 60, end: 120 }, circularStyle.normal),
+}
+graph.updateQueue(0, [[n]]);
 ```
 
-<Graph layers={sector} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+<Graph height={400} graph={sGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
 
 ## Pie
 
 Example of a pie.
 
 ```js
-const layers = [
-  [
-    {
-      x: 180,
-      y: 220,
-      shapes: c.pie.shapes({ radius: 72, start: 30, end: 60 }, circularStyle.normal),
-    },
-  ],
-];
-graph.updateQueue(0, layers);
+const n = {
+  x: 180,
+  y: 220,
+  shapes: c.pie.shapes({ radius: 72, start: 30, end: 60 }, circularStyle.normal),
+};
+graph.updateQueue(0, [[n]]);
 ```
 
-<Graph layers={pie} options={[]} height={400} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+<Graph height={400} graph={pGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />

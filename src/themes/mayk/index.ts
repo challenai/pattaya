@@ -6,3 +6,5 @@ export * as slider from "./slider";
 export * as nodes from "./nodes";
 export * as circular from "./circular";
 export * as split from "./split";
+export * as line from "./line";
+export * as pattern from "./pattern";

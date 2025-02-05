@@ -1,7 +1,7 @@
 {
   "name": "@pattaya/pattaya",
   "module": "lib/index.min.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "exports": {
     ".": {
@@ -23,6 +23,10 @@
     "./components": {
       "types": "./types/components/index.d.ts",
       "default": "./lib/components/index.min.js"
+    },
+    "./animation": {
+      "types": "./types/animation/index.d.ts",
+      "default": "./lib/animation/index.min.js"
     }
   },
   "files": [
@@ -41,7 +45,7 @@
   },
   "dependencies": {
     "@pattaya/depict": "^0.6.0",
-    "impressionist": "^1.0.4",
+    "impressionist": "^1.1.0",
     "motion": "^12.0.6"
   },
   "devDependencies": {
