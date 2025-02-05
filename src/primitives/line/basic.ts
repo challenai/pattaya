@@ -1,7 +1,8 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
-import type { Point } from "./point";
+import type { Endpoint, Point } from "./point";
 import { line } from "impressionist";
+import { points2Radians } from "../../utils/ratotation";
 
 export interface BasicLineProps {
   start: Point
@@ -37,9 +38,27 @@ export function wireframe({ start, end }: BasicLineProps): string {
   return line.basic(start.x, start.y, end.x, end.y);
 };
 
+export function start({ start, end }: BasicLineProps): Endpoint {
+  return {
+    x: start.x,
+    y: start.y,
+    rotation: points2Radians(start.x, start.y, end.x, end.y),
+  };
+}
+
+export function end({ start, end }: BasicLineProps): Endpoint {
+  return {
+    x: end.x,
+    y: end.y,
+    rotation: points2Radians(start.x, start.y, end.x, end.y),
+  };
+}
+
 export default {
   shapes,
   wireframe,
   toOpts,
   applyStyle,
+  start,
+  end,
 };
