@@ -1,6 +1,8 @@
 import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
 import { step } from "impressionist";
+import type { Endpoint, Point } from "./point";
+import { points2Radians } from "../../utils/ratotation";
 
 export interface StepLineProps {
   points: number[];
@@ -36,9 +38,54 @@ export function wireframe({ points, radius }: StepLineProps): string {
   return step.relative(0, 0, points, radius);
 };
 
+export function start(pathes: number[]): Endpoint | null {
+  if (pathes.length < 1) return null;
+  let nx = 0;
+  let ny = 0;
+  if (pathes[0] === 0) {
+    ny = pathes[0];
+  } else {
+    nx = pathes[0];
+  }
+  return {
+    x: 0,
+    y: 0,
+    rotation: points2Radians(0, 0, nx, ny),
+  };
+}
+
+export function end(pathes: number[]): Endpoint | null {
+  if (pathes.length < 1) return null;
+  let x = 0;
+  let y = 0;
+  let h = true;
+  for (const p of pathes) {
+    if (h) {
+      x += p;
+    } else {
+      y += p;
+    }
+    h = !h;
+  }
+  let dx = 0;
+  let dy = 0;
+  if (h) {
+    dy = pathes[pathes.length - 1];
+  } else {
+    dx = pathes[pathes.length - 1];
+  }
+  return {
+    x,
+    y,
+    rotation: points2Radians(0, 0, dx, dy),
+  };
+}
+
 export default {
   shapes,
   wireframe,
   toOpts,
   applyStyle,
+  start,
+  end,
 };
