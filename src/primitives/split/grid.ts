@@ -29,7 +29,7 @@ export function toBoxOpts(styles: SplitStyles): MeshOptions {
   return opts;
 }
 
-export function toSeperatorOpts(style: SplitStyles): MeshOptions {
+export function toSeperatorOpts(styles: SplitStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.border) {
     opts.border = true;
