@@ -8,13 +8,18 @@ export interface PieProps {
   end: number,
 };
 
-export function toOpts(style: CircularStyles): MeshOptions {
-  return {
-    fill: style.background,
-    stroke: style.border,
-    shadowColor: style.shadow,
-    shadowBlur: style.shadowBlur,
-  };
+export function toOpts(styles: CircularStyles): MeshOptions {
+  const opts: MeshOptions = {};
+  if (styles.background) opts.fill = styles.background;
+  if (styles.shadow) opts.shadowColor = styles.shadow;
+  if (styles.shadowBlur) opts.shadowBlur = styles.shadowBlur;
+  if (styles.border) {
+    opts.border = true;
+    opts.stroke = styles.border;
+  } else {
+    opts.border = false;
+  }
+  return opts;
 }
 
 export function applyStyle(shape: Mesh[] | undefined, style: CircularStyles) {

@@ -1,4 +1,4 @@
 export interface LineStyles {
-  color: string;
-  width: number;
+  color?: string;
+  width?: number;
 };

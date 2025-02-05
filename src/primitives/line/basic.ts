@@ -8,10 +8,16 @@ export interface BasicLineProps {
   end: Point;
 };
 
-function toOpts(style: LineStyles): MeshOptions {
-  return {
-    stroke: style.color,
-  };
+function toOpts(styles: LineStyles): MeshOptions {
+  const opts: MeshOptions = {};
+  if (styles.width) opts.lineWidth = styles.width;
+  if (styles.color) {
+    opts.border = true;
+    opts.stroke = styles.color;
+  } else {
+    opts.border = false;
+  }
+  return opts;
 };
 
 export function applyStyle(shape: Mesh[] | undefined, style: LineStyles) {
