@@ -5,7 +5,7 @@ import type { Endpoint, Point } from "./point";
 import { points2Radians } from "../../utils/ratotation";
 
 export interface StepLineProps {
-  points: number[];
+  pathes: number[];
   radius?: number;
 };
 
@@ -34,8 +34,8 @@ export function shapes(props: StepLineProps, style: LineStyles): Mesh[] {
   ];
 };
 
-export function wireframe({ points, radius }: StepLineProps): string {
-  return step.relative(0, 0, points, radius);
+export function wireframe({ pathes, radius }: StepLineProps): string {
+  return step.relative(0, 0, pathes, radius);
 };
 
 export function start(pathes: number[]): Endpoint | null {
