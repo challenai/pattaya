@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { ArrowStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { arrow } from "impressionist";
 
 export interface BasicArrowProps {
@@ -19,11 +20,11 @@ export function toOpts(styles: ArrowStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shapes: Mesh[] | undefined, style: ArrowStyles) {
+export function applyStyle(shapes: Shapes, style: ArrowStyles) {
   shapes![0].opts = toOpts(style);
 };
 
-export function shapes(props: BasicArrowProps, style: ArrowStyles): Mesh[] {
+export function shapes(props: BasicArrowProps, style: ArrowStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -36,8 +37,13 @@ export function wireframe({ width, height }: BasicArrowProps): string {
   return arrow.basic(0, 0, width, height);
 };
 
+export function update(shapes: Shapes, props: BasicArrowProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,
