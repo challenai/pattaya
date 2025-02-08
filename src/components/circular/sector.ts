@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { CircularStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { circular } from "impressionist";
 
 export interface SectorProps {
@@ -23,11 +24,11 @@ export function toOpts(styles: CircularStyles): MeshOptions {
   return opts;
 }
 
-export function applyStyle(shape: Mesh[] | undefined, style: CircularStyles) {
+export function applyStyle(shape: Shapes, style: CircularStyles) {
   shape![0].opts = toOpts(style);
 }
 
-export function shapes(props: SectorProps, style: CircularStyles): Mesh[] {
+export function shapes(props: SectorProps, style: CircularStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -40,8 +41,13 @@ export function wireframe({ radius0, radius1, start, end }: SectorProps): string
   return circular.sector(0, 0, radius0, radius1, start, end);
 }
 
+export function update(shapes: Shapes, props: SectorProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,
