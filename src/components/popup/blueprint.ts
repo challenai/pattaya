@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { PopupStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { common } from "impressionist";
 
 export interface PopupProps {
@@ -24,11 +25,11 @@ export function toOpts(styles: PopupStyles): MeshOptions {
   return opts;
 }
 
-export function applyStyle(shape: Mesh[] | undefined, style: PopupStyles) {
+export function applyStyle(shape: Shapes, style: PopupStyles) {
   shape![0].opts = toOpts(style);
 }
 
-export function shapes(props: PopupProps, style: PopupStyles): Mesh[] {
+export function shapes(props: PopupProps, style: PopupStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -41,8 +42,13 @@ export function wireframe({ width, height, radius, triangleHeight, triangleWidth
   return common.popup(0, 0, width, height, radius, triangleWidth, triangleHeight);
 }
 
+export function update(shapes: Shapes, props: PopupProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,
