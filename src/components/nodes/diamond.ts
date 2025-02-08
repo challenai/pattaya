@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { rectangle } from "impressionist";
 
 export interface DiamondProps {
@@ -21,11 +22,11 @@ function toOpts(styles: NodeStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Mesh[] | undefined, style: NodeStyles) {
+export function applyStyle(shape: Shapes, style: NodeStyles) {
   shape![0].opts = toOpts(style);
 };
 
-export function shapes(props: DiamondProps, style: NodeStyles): Mesh[] {
+export function shapes(props: DiamondProps, style: NodeStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -38,8 +39,13 @@ export function wireframe({ width, height }: DiamondProps): string {
   return rectangle.diamond(0, 0, width, height);
 };
 
+export function update(shapes: Shapes, props: DiamondProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,

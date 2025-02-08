@@ -1,11 +1,13 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { rectangle } from "impressionist";
 
 export interface RectangleProps {
   width: number;
   height: number;
-  radius: number;
+  radius?: number;
+  aligned?: boolean;
 };
 
 function toOpts(styles: NodeStyles): MeshOptions {
@@ -22,11 +24,11 @@ function toOpts(styles: NodeStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Mesh[] | undefined, style: NodeStyles) {
-  shape![0].opts = toOpts(style);
+export function applyStyle(shapes: Shapes, style: NodeStyles) {
+  shapes![0].opts = toOpts(style);
 };
 
-export function shapes(props: RectangleProps, style: NodeStyles): Mesh[] {
+export function shapes(props: RectangleProps, style: NodeStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -35,15 +37,26 @@ export function shapes(props: RectangleProps, style: NodeStyles): Mesh[] {
   ];
 };
 
-export function wireframe({ width, height, radius }: RectangleProps): string {
-  if (radius === 0) {
-    return rectangle.basic(0, 0, width, height);
+export function wireframe({ width, height, radius, aligned }: RectangleProps): string {
+  if (radius) {
+    if (aligned) {
+      return rectangle.roundAligned(0, 0, width, height, radius);
+    }
+    return rectangle.round(0, 0, width, height, radius);
   }
-  return rectangle.round(0, 0, width, height, radius);
+  if (aligned) {
+    return rectangle.basicAligned(0, 0, width, height);
+  }
+  return rectangle.basic(0, 0, width, height);
+};
+
+export function update(shapes: Shapes, props: RectangleProps) {
+  shapes![0].path = wireframe(props);
 };
 
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,
