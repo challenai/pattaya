@@ -1,34 +1,39 @@
-import type { ShadowElement } from "@pattaya/depict/graph";
-import type { LineStyles } from "../../primitives/line/styles";
-import { type ArrowType, endpointArrow } from "./arrows";
-import { line } from "../../primitives";
+import type { LineStyles } from "../line/styles";
+import type { Fragment, Fragments } from "../../core";
+import * as step from "../line/step";
+import { ArrowType, endpointArrow } from "./arrows";
 
 export interface StepEdgeProps {
   pathes: number[];
   radius?: number;
-  styles: {
-    normal: LineStyles;
-    active: LineStyles;
-  };
   startDecoration?: ArrowType;
   endDecoration?: ArrowType;
-  children?: ShadowElement[];
 };
 
-export function StepEdge(x: number, y: number, { pathes, radius, startDecoration, endDecoration, styles }: StepEdgeProps): ShadowElement {
-  const children = [];
+export function fragments(x: number, y: number, { pathes, radius, startDecoration, endDecoration }: StepEdgeProps, styles: LineStyles): Fragments {
+  const frags: Fragment[] = [
+    {
+      x,
+      y,
+      shapes: step.shapes({ pathes, radius }, styles),
+    }
+  ];
   if (startDecoration) {
-    const se = line.step.start(pathes);
-    if (se) children.push(endpointArrow(startDecoration, se, styles.normal));
+    const se = step.start(pathes);
+    if (se) frags.push(endpointArrow(startDecoration, se, styles));
   }
   if (endDecoration) {
-    const ee = line.step.end(pathes);
-    if (ee) children.push(endpointArrow(endDecoration, ee, styles.normal));
+    const ee = step.end(pathes);
+    if (ee) frags.push(endpointArrow(endDecoration, ee, styles));
   }
-  return {
-    x,
-    y,
-    shapes: line.step.shapes({ pathes, radius }, styles.normal),
-    children,
-  };
+  return frags;
 }
+
+export function applyStyles(fragments: Fragments, styles: LineStyles) {
+  step.applyStyle(fragments![0].shapes, styles);
+};
+
+export default {
+  fragments,
+  applyStyles,
+};

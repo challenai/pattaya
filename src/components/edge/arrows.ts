@@ -1,7 +1,8 @@
-import { Mesh, ShadowElement } from "@pattaya/depict/graph";
-import { arrow } from "../../primitives";
-import { Endpoint } from "../../primitives/line/point";
-import { LineStyles } from "../../primitives/line/styles";
+import type { MeshOptions } from "@pattaya/depict/graph";
+import type { Endpoint } from "../line/point";
+import type { LineStyles } from "../line/styles";
+import type { Fragment } from "../../core";
+import * as arrow from "../arrow";
 
 export enum ArrowType {
   Basic = 1,
@@ -12,39 +13,39 @@ export enum ArrowType {
   Vee,
 };
 
-// TODO: should we expose the arrows parameters to the users in the level of components?
-export function endpointArrow(typ: ArrowType, ep: Endpoint, styles: LineStyles): ShadowElement {
-  const m: Mesh = {
-    path: "",
-    opts: {
-      stroke: styles.color,
-      rotation: ep.rotation + Math.PI / 2,
-    },
-  };
-  if (styles.width) m.opts!.lineWidth = styles.width;
+function buildArrow(typ: ArrowType): string {
   switch (typ) {
     case ArrowType.Basic:
-      m.path = arrow.basic.wireframe({ width: 9, height: 6 });
-      break;
+      return arrow.basic.wireframe({ width: 9, height: 6 });
     case ArrowType.Blunt:
-      m.path = arrow.blunt.wireframe({ width: 9, low: 4, high: 9 });
-      break;
+      return arrow.blunt.wireframe({ width: 9, low: 4, high: 9 });
     case ArrowType.Bullet:
-      m.path = arrow.bullet.wireframe({ width: 9, height: 6 });
-      break;
+      return arrow.bullet.wireframe({ width: 9, height: 6 });
     case ArrowType.Dome:
-      m.path = arrow.dome.wireframe({ width: 9, low: 6 });
-      break;
+      return arrow.dome.wireframe({ width: 9, low: 6 });
     case ArrowType.Triangle:
-      m.path = arrow.triangle.wireframe({ width: 9, height: 6 });
-      break;
+      return arrow.triangle.wireframe({ width: 9, height: 6 });
     case ArrowType.Vee:
-      m.path = arrow.vee.wireframe({ width: 9, low: 6, high: 9 });
-      break;
+      return arrow.vee.wireframe({ width: 9, low: 6, high: 9 });
   }
+  return "";
+}
+
+// TODO: should we expose the arrows parameters to the users in the level of components?
+export function endpointArrow(typ: ArrowType, ep: Endpoint, styles: LineStyles): Fragment {
+  const opts: MeshOptions = {
+    stroke: styles.color,
+    rotation: ep.rotation + Math.PI / 2,
+  };
+  if (styles.width) opts.lineWidth = styles.width;
   return {
     x: ep.x,
     y: ep.y,
-    shapes: [m],
+    shapes: [
+      {
+        path: buildArrow(typ),
+        opts,
+      }
+    ],
   };
 }

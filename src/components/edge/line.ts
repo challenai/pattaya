@@ -1,35 +1,40 @@
-import type { ShadowElement } from "@pattaya/depict/graph";
-import type { Point } from "../../primitives/line/point";
-import type { LineStyles } from "../../primitives/line/styles";
-import { line } from "../../primitives";
+import type { Point } from "../line/point";
+import type { LineStyles } from "../line/styles";
+import type { Fragment, Fragments } from "../../core";
+import * as basic from "../line/basic";
 import { ArrowType, endpointArrow } from "./arrows";
 
 export interface LineEdgeProps {
   start: Point;
   end: Point;
-  styles: {
-    normal: LineStyles;
-    active: LineStyles;
-  };
   startDecoration?: ArrowType;
   endDecoration?: ArrowType;
-  children?: ShadowElement[];
 };
 
-export function LineEdge(x: number, y: number, { start, end, startDecoration, endDecoration, styles }: LineEdgeProps): ShadowElement {
-  const children = [];
+export function fragments(x: number, y: number, { start, end, startDecoration, endDecoration }: LineEdgeProps, styles: LineStyles): Fragments {
+  const frags: Fragment[] = [
+    {
+      x,
+      y,
+      shapes: basic.shapes({ start, end }, styles),
+    }
+  ];
   if (startDecoration) {
-    const se = line.basic.start({ start, end });
-    if (se) children.push(endpointArrow(startDecoration, se, styles.normal));
+    const se = basic.start({ start, end });
+    if (se) frags.push(endpointArrow(startDecoration, se, styles));
   }
   if (endDecoration) {
-    const ee = line.basic.end({ start, end });
-    if (ee) children.push(endpointArrow(endDecoration, ee, styles.normal));
+    const ee = basic.end({ start, end });
+    if (ee) frags.push(endpointArrow(endDecoration, ee, styles));
   }
-  return {
-    x,
-    y,
-    shapes: line.basic.shapes({ start, end }, styles.normal),
-    children,
-  };
+  return frags;
 }
+
+export function applyStyles(fragments: Fragments, styles: LineStyles) {
+  basic.applyStyle(fragments![0].shapes, styles);
+};
+
+export default {
+  fragments,
+  applyStyles,
+};

@@ -1,34 +1,54 @@
-import type { ShadowElement } from "@pattaya/depict/graph";
-import type { Point } from "../../primitives/line/point";
-import type { LineStyles } from "../../primitives/line/styles";
-import { line } from "../../primitives";
+import type { Point } from "../line/point";
+import type { LineStyles } from "../line/styles";
+import type { EdgeFragments } from "./edge";
+import * as cubic from "../line/cubic";
 import { ArrowType, endpointArrow } from "./arrows";
 
 export interface CubicBezierEdgeProps {
   points: Point[];
-  styles: {
-    normal: LineStyles;
-    active: LineStyles;
-  };
   startDecoration?: ArrowType;
   endDecoration?: ArrowType;
-  children?: ShadowElement[];
 };
 
-export function CubicBezierEdge(x: number, y: number, { points, startDecoration, endDecoration, styles }: CubicBezierEdgeProps): ShadowElement {
-  const children = [];
+export function fragments({ points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: LineStyles): EdgeFragments {
+  const lineFrag = {
+    x: 0,
+    y: 0,
+    shapes: cubic.shapes(points, styles),
+  };
+  const frags: EdgeFragments = {
+    line: lineFrag,
+    elements: [],
+  };
   if (startDecoration) {
-    const se = line.cubic.start(points);
-    if (se) children.push(endpointArrow(startDecoration, se, styles.normal));
+    const se = cubic.start(points);
+    if (se) {
+      const start = endpointArrow(startDecoration, se, styles);
+      frags.start = start;
+      frags.elements.push(frags.start);
+    }
   }
   if (endDecoration) {
-    const ee = line.cubic.end(points);
-    if (ee) children.push(endpointArrow(endDecoration, ee, styles.normal));
+    const ee = cubic.end(points);
+    if (ee) {
+      const end = endpointArrow(endDecoration, ee, styles);
+      frags.end = end;
+      frags.elements.push(end);
+    }
   }
-  return {
-    x,
-    y,
-    shapes: line.cubic.shapes(points, styles.normal),
-    children,
-  };
+  return frags;
 }
+
+export function applyStyles(fragments: EdgeFragments, styles: LineStyles) {
+  cubic.applyStyle(fragments.line.shapes, styles);
+};
+
+// export function update(fragments: EdgeFragments, props: CubicBezierEdgeProps) {
+//   cubic.update(fragments.line.shapes, props.points);
+//   const se = cubic.start(props.points);
+// };
+
+export default {
+  fragments,
+  applyStyles,
+};

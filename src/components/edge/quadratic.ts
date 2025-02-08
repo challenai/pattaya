@@ -1,34 +1,39 @@
-import type { ShadowElement } from "@pattaya/depict/graph";
-import type { Point } from "../../primitives/line/point";
-import type { LineStyles } from "../../primitives/line/styles";
-import { line } from "../../primitives";
+import type { Point } from "../line/point";
+import type { LineStyles } from "../line/styles";
+import type { Fragments } from "../../core";
+import * as quadratic from "../line/quadratic";
 import { ArrowType, endpointArrow } from "./arrows";
 
 export interface QuadraticBezierEdgeProps {
   points: Point[];
-  styles: {
-    normal: LineStyles;
-    active: LineStyles;
-  };
   startDecoration?: ArrowType;
   endDecoration?: ArrowType;
-  children?: ShadowElement[];
 };
 
-export function QuadraticBezierEdge(x: number, y: number, { points, startDecoration, endDecoration, styles }: QuadraticBezierEdgeProps): ShadowElement {
-  const children = [];
+export function fragments({ points, startDecoration, endDecoration }: QuadraticBezierEdgeProps, styles: LineStyles): Fragments {
+  const frags: Fragments = [
+    {
+      x: 0,
+      y: 0,
+      shapes: quadratic.shapes(points, styles),
+    },
+  ];
   if (startDecoration) {
-    const se = line.quadratic.start(points);
-    if (se) children.push(endpointArrow(startDecoration, se, styles.normal));
+    const se = quadratic.start(points);
+    if (se) frags.push(endpointArrow(startDecoration, se, styles));
   }
   if (endDecoration) {
-    const ee = line.quadratic.end(points);
-    if (ee) children.push(endpointArrow(endDecoration, ee, styles.normal));
+    const ee = quadratic.end(points);
+    if (ee) frags.push(endpointArrow(endDecoration, ee, styles));
   }
-  return {
-    x,
-    y,
-    shapes: line.quadratic.shapes(points, styles.normal),
-    children,
-  };
+  return frags;
 }
+
+export function applyStyles(fragments: Fragments, styles: LineStyles) {
+  quadratic.applyStyle(fragments![0].shapes, styles);
+};
+
+export default {
+  fragments,
+  applyStyles,
+};

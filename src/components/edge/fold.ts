@@ -1,34 +1,39 @@
-import type { ShadowElement } from "@pattaya/depict/graph";
-import type { Point } from "../../primitives/line/point";
-import type { LineStyles } from "../../primitives/line/styles";
-import { line } from "../../primitives";
+import type { Point } from "../line/point";
+import type { LineStyles } from "../line/styles";
+import type { Fragment, Fragments } from "../../core";
+import * as fold from "../line/fold";
 import { ArrowType, endpointArrow } from "./arrows";
 
 export interface FoldEdgeProps {
   points: Point[];
-  styles: {
-    normal: LineStyles;
-    active: LineStyles;
-  };
   startDecoration?: ArrowType;
   endDecoration?: ArrowType;
-  children?: ShadowElement[];
 };
 
-export function FoldEdge(x: number, y: number, { points, startDecoration, endDecoration, styles }: FoldEdgeProps): ShadowElement {
-  const children = [];
+export function fragments(x: number, y: number, { points, startDecoration, endDecoration }: FoldEdgeProps, styles: LineStyles): Fragments {
+  const frags: Fragment[] = [
+    {
+      x,
+      y,
+      shapes: fold.shapes(points, styles),
+    }
+  ];
   if (startDecoration) {
-    const se = line.fold.start(points);
-    if (se) children.push(endpointArrow(startDecoration, se, styles.normal));
+    const se = fold.start(points);
+    if (se) frags.push(endpointArrow(startDecoration, se, styles));
   }
   if (endDecoration) {
-    const ee = line.fold.end(points);
-    if (ee) children.push(endpointArrow(endDecoration, ee, styles.normal));
+    const ee = fold.end(points);
+    if (ee) frags.push(endpointArrow(endDecoration, ee, styles));
   }
-  return {
-    x,
-    y,
-    shapes: line.fold.shapes(points, styles.normal),
-    children,
-  };
+  return frags;
 }
+
+export function applyStyles(fragments: Fragments, styles: LineStyles) {
+  fold.applyStyle(fragments![0].shapes, styles);
+};
+
+export default {
+  fragments,
+  applyStyles,
+};
