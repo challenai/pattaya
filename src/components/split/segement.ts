@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { SplitStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { rectangle } from "impressionist";
 
 export interface SegementProps {
@@ -10,7 +11,7 @@ export interface SegementProps {
   radius?: number;
 };
 
-export function toBoxOpts(styles: SplitStyles): MeshOptions {
+function toBoxOpts(styles: SplitStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.background) opts.fill = styles.background;
   if (styles.shadow) opts.shadowColor = styles.shadow;
@@ -24,7 +25,7 @@ export function toBoxOpts(styles: SplitStyles): MeshOptions {
   return opts;
 }
 
-export function toSeperatorOpts(styles: SplitStyles): MeshOptions {
+function toSeperatorOpts(styles: SplitStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.border) {
     opts.border = true;
@@ -35,40 +36,49 @@ export function toSeperatorOpts(styles: SplitStyles): MeshOptions {
   return opts;
 }
 
-export function applyStyle(shape: Mesh[] | undefined, style: SplitStyles) {
+export function applyStyle(shape: Shapes, style: SplitStyles) {
   shape![0].opts = toBoxOpts(style);
   shape![1].opts = toSeperatorOpts(style);
 }
 
-export function shapes({ width, height, offsets, vertical, radius }: SegementProps, styles: SplitStyles): Mesh[] {
-  const result: Mesh[] = [];
-  const rect = radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height);
-  result.push({
-    path: rect,
-    opts: toBoxOpts(styles),
-  });
-  let path = "";
+function buildSeperator(width: number, height: number, offsets: number[], vertical?: boolean): string {
+  let p = "";
   for (let offset of offsets) {
     if (vertical) {
       if (offset < height) {
         offset += 0.5;
-        path += `M0 ${offset}L${width} ${offset}`;
+        p += `M0 ${offset}L${width} ${offset}`;
       }
     } else {
       if (offset < width) {
         offset += 0.5;
-        path += `M${offset} 0L${offset} ${height}`;
+        p += `M${offset} 0L${offset} ${height}`;
       }
     }
   }
-  result.push({
-    path: path,
-    opts: toSeperatorOpts(styles),
-  });
-  return result;
+  return p;
 }
+
+export function shapes({ width, height, offsets, vertical, radius }: SegementProps, styles: SplitStyles): Shapes {
+  return [
+    {
+      path: radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height),
+      opts: toBoxOpts(styles),
+    },
+    {
+      path: buildSeperator(width, height, offsets, vertical),
+      opts: toSeperatorOpts(styles),
+    }
+  ];
+}
+
+export function update(shapes: Shapes, { width, height, offsets, vertical, radius }: SegementProps) {
+  shapes![0].path = radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height);
+  shapes![1].path = buildSeperator(width, height, offsets, vertical);
+};
 
 export default {
   shapes,
+  update,
   applyStyle,
 };

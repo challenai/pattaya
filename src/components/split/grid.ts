@@ -1,5 +1,6 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { SplitStyles } from "./styles";
+import type { Shapes } from "../../core";
 import { rectangle } from "impressionist";
 
 export interface GridUnit {
@@ -15,7 +16,7 @@ export interface GridProps {
   radius?: number;
 };
 
-export function toBoxOpts(styles: SplitStyles): MeshOptions {
+function toBoxOpts(styles: SplitStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.background) opts.fill = styles.background;
   if (styles.shadow) opts.shadowColor = styles.shadow;
@@ -29,7 +30,7 @@ export function toBoxOpts(styles: SplitStyles): MeshOptions {
   return opts;
 }
 
-export function toSeperatorOpts(styles: SplitStyles): MeshOptions {
+function toSeperatorOpts(styles: SplitStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.border) {
     opts.border = true;
@@ -40,7 +41,7 @@ export function toSeperatorOpts(styles: SplitStyles): MeshOptions {
   return opts;
 }
 
-export function applyStyle(shape: Mesh[] | undefined, style: SplitStyles) {
+export function applyStyle(shape: Shapes, style: SplitStyles) {
   shape![0].opts = toBoxOpts(style);
   shape![1].opts = toSeperatorOpts(style);
 }
@@ -87,22 +88,26 @@ function buildHorizontalSeperators(width: number, height: number, units: GridUni
   return path;
 }
 
-export function shapes({ width, height, units, vertical, radius }: GridProps, styles: SplitStyles): Mesh[] {
-  const result: Mesh[] = [];
-  const rect = radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height);
-  result.push({
-    path: rect,
-    opts: toBoxOpts(styles),
-  });
-  let path = vertical ? buildVerticalSeperators(width, height, units) : buildHorizontalSeperators(width, height, units);
-  result.push({
-    path,
-    opts: toSeperatorOpts(styles),
-  });
-  return result;
-}
+export function shapes({ width, height, units, vertical, radius }: GridProps, styles: SplitStyles): Shapes {
+  return [
+    {
+      path: radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height),
+      opts: toBoxOpts(styles),
+    },
+    {
+      path: vertical ? buildVerticalSeperators(width, height, units) : buildHorizontalSeperators(width, height, units),
+      opts: toSeperatorOpts(styles),
+    },
+  ];
+};
+
+export function update(shapes: Shapes, { width, height, units, vertical, radius }: GridProps) {
+  shapes![0].path = radius ? rectangle.roundAligned(0, 0, width, height, radius) : rectangle.basicAligned(0, 0, width, height);
+  shapes![1].path = vertical ? buildVerticalSeperators(width, height, units) : buildHorizontalSeperators(width, height, units);
+};
 
 export default {
   shapes,
+  update,
   applyStyle,
 };
