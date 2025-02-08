@@ -1,8 +1,9 @@
 import type { Point } from "../line/point";
 import type { LineStyles } from "../line/styles";
 import type { EdgeFragments } from "./edge";
+import type { Fragment } from "../../core";
 import * as cubic from "../line/cubic";
-import { ArrowType, endpointArrow } from "./arrows";
+import { applyArrowStyles, ArrowType, endpointArrow, } from "./arrows";
 
 export interface CubicBezierEdgeProps {
   points: Point[];
@@ -11,7 +12,7 @@ export interface CubicBezierEdgeProps {
 };
 
 export function fragments({ points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: LineStyles): EdgeFragments {
-  const lineFrag = {
+  const lineFrag: Fragment = {
     x: 0,
     y: 0,
     shapes: cubic.shapes(points, styles),
@@ -41,14 +42,51 @@ export function fragments({ points, startDecoration, endDecoration }: CubicBezie
 
 export function applyStyles(fragments: EdgeFragments, styles: LineStyles) {
   cubic.applyStyle(fragments.line.shapes, styles);
+  if (fragments.start) applyArrowStyles(fragments.start, styles);
+  if (fragments.end) applyArrowStyles(fragments.end, styles);
 };
 
-// export function update(fragments: EdgeFragments, props: CubicBezierEdgeProps) {
-//   cubic.update(fragments.line.shapes, props.points);
-//   const se = cubic.start(props.points);
-// };
+export function update(frags: EdgeFragments, { points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: LineStyles) {
+  frags.line.shapes = cubic.shapes(points, styles);
+  frags.elements.length = 0;
+  frags.elements.push(frags.line);
+
+  if (startDecoration) {
+    const se = cubic.start(points);
+    if (se) {
+      const start = endpointArrow(startDecoration, se, styles);
+      if (frags.start) {
+        frags.start.x = start.x;
+        frags.start.y = start.y;
+        frags.start.shapes = start.shapes;
+      } else {
+        frags.start = start;
+      }
+      frags.elements.push(frags.start);
+    } else {
+      frags.start = undefined;
+    }
+  }
+  if (endDecoration) {
+    const ee = cubic.end(points);
+    if (ee) {
+      const end = endpointArrow(endDecoration, ee, styles);
+      if (frags.end) {
+        frags.end.x = end.x;
+        frags.end.y = end.y;
+        frags.end.shapes = end.shapes;
+      } else {
+        frags.end = end;
+      }
+      frags.elements.push(frags.end);
+    } else {
+      frags.end = undefined;
+    }
+  }
+};
 
 export default {
   fragments,
+  update,
   applyStyles,
 };

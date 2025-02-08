@@ -49,3 +49,9 @@ export function endpointArrow(typ: ArrowType, ep: Endpoint, styles: LineStyles):
     ],
   };
 }
+
+export function applyArrowStyles(fragment: Fragment, styles: LineStyles) {
+  const opts = fragment.shapes![0].opts!;
+  if (styles.width) opts.lineWidth = styles.width;
+  opts.stroke = styles.color;
+}
