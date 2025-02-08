@@ -1,8 +1,8 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
 import type { Endpoint, Point } from "./point";
+import { type Shapes, rotation } from "../../core";
 import { line } from "impressionist";
-import { points2Radians } from "../../utils/ratotation";
 
 export interface BasicLineProps {
   start: Point
@@ -21,11 +21,11 @@ function toOpts(styles: LineStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Mesh[] | undefined, style: LineStyles) {
+export function applyStyle(shape: Shapes, style: LineStyles) {
   shape![0].opts = toOpts(style);
 };
 
-export function shapes(props: BasicLineProps, style: LineStyles): Mesh[] {
+export function shapes(props: BasicLineProps, style: LineStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -42,7 +42,7 @@ export function start({ start, end }: BasicLineProps): Endpoint {
   return {
     x: start.x,
     y: start.y,
-    rotation: points2Radians(start.x, start.y, end.x, end.y),
+    rotation: rotation.points2Radians(start.x, start.y, end.x, end.y),
   };
 }
 
@@ -50,12 +50,17 @@ export function end({ start, end }: BasicLineProps): Endpoint {
   return {
     x: end.x,
     y: end.y,
-    rotation: points2Radians(start.x, start.y, end.x, end.y),
+    rotation: rotation.points2Radians(start.x, start.y, end.x, end.y),
   };
 }
 
+export function update(shapes: Shapes, props: BasicLineProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,

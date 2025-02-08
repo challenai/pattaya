@@ -1,8 +1,8 @@
-import type { Mesh, MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
+import type { Endpoint } from "./point";
+import { type Shapes, rotation } from "../../core";
 import { step } from "impressionist";
-import type { Endpoint, Point } from "./point";
-import { points2Radians } from "../../utils/ratotation";
 
 export interface StepLineProps {
   pathes: number[];
@@ -21,11 +21,11 @@ function toOpts(styles: LineStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Mesh[] | undefined, style: LineStyles) {
+export function applyStyle(shape: Shapes, style: LineStyles) {
   shape![0].opts = toOpts(style);
 };
 
-export function shapes(props: StepLineProps, style: LineStyles): Mesh[] {
+export function shapes(props: StepLineProps, style: LineStyles): Shapes {
   return [
     {
       path: wireframe(props),
@@ -50,7 +50,7 @@ export function start(pathes: number[]): Endpoint | null {
   return {
     x: 0,
     y: 0,
-    rotation: points2Radians(0, 0, nx, ny),
+    rotation: rotation.points2Radians(0, 0, nx, ny),
   };
 }
 
@@ -77,12 +77,17 @@ export function end(pathes: number[]): Endpoint | null {
   return {
     x,
     y,
-    rotation: points2Radians(0, 0, dx, dy),
+    rotation: rotation.points2Radians(0, 0, dx, dy),
   };
 }
 
+export function update(shapes: Shapes, props: StepLineProps) {
+  shapes![0].path = wireframe(props);
+};
+
 export default {
   shapes,
+  update,
   wireframe,
   toOpts,
   applyStyle,
