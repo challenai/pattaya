@@ -8,7 +8,7 @@ export interface PopupProps {
   height: number,
   triangleWidth: number,
   triangleHeight: number,
-  radius: number,
+  radius?: number,
 };
 
 export function toOpts(styles: PopupStyles): MeshOptions {
@@ -39,6 +39,7 @@ export function shapes(props: PopupProps, style: PopupStyles): Shapes {
 }
 
 export function wireframe({ width, height, radius, triangleHeight, triangleWidth }: PopupProps): string {
+  if (!radius) radius = 0;
   return common.popup(0, 0, width, height, radius, triangleWidth, triangleHeight);
 }
 
