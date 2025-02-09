@@ -1,16 +1,16 @@
 {
   "name": "@pattaya/pattaya",
   "module": "lib/index.min.js",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
       "default": "./lib/index.min.js"
     },
-    "./primitives": {
-      "types": "./types/primitives/index.d.ts",
-      "default": "./lib/primitives/index.min.js"
+    "./core": {
+      "types": "./types/core/index.d.ts",
+      "default": "./lib/core/index.min.js"
     },
     "./themes": {
       "types": "./types/themes/index.d.ts",
@@ -24,9 +24,9 @@
       "types": "./types/components/index.d.ts",
       "default": "./lib/components/index.min.js"
     },
-    "./animation": {
-      "types": "./types/animation/index.d.ts",
-      "default": "./lib/animation/index.min.js"
+    "./mayk": {
+      "types": "./types/themes/mayk/index.d.ts",
+      "default": "./lib/themes/mayk/index.min.js"
     }
   },
   "files": [
@@ -44,7 +44,7 @@
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "@pattaya/depict": "^0.6.0",
+    "@pattaya/depict": "^0.6.1",
     "impressionist": "^1.1.0",
     "motion": "^12.0.6"
   },
