@@ -19,7 +19,7 @@ export function fragments({ pathes, radius, startDecoration, endDecoration }: St
   };
   const frags: EdgeFragments = {
     line: lineFrag,
-    elements: [],
+    elements: [lineFrag],
   };
   if (startDecoration) {
     const se = step.start(pathes);

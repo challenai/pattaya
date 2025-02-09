@@ -19,7 +19,7 @@ export function fragments({ points, startDecoration, endDecoration }: FoldEdgePr
   };
   const frags: EdgeFragments = {
     line: lineFrag,
-    elements: [],
+    elements: [lineFrag],
   };
   if (startDecoration) {
     const se = fold.start(points);

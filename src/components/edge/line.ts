@@ -20,18 +20,23 @@ export function fragments({ start, end, startDecoration, endDecoration }: LineEd
   };
   const frags: EdgeFragments = {
     line: lineFrag,
-    elements: [],
+    elements: [lineFrag],
   };
-  const r = basic.start({ start, end });
-  if (startDecoration && r) {
-    const start = endpointArrow(startDecoration, r, styles);
-    frags.start = start;
-    frags.elements.push(frags.start);
+  if (startDecoration) {
+    const se = basic.start({ start, end });
+    if (se) {
+      const start = endpointArrow(startDecoration, se, styles);
+      frags.start = start;
+      frags.elements.push(frags.start);
+    }
   }
-  if (endDecoration && r) {
-    const end = endpointArrow(endDecoration, r, styles);
-    frags.end = end;
-    frags.elements.push(end);
+  if (endDecoration) {
+    const ee = basic.end({ start, end });
+    if (ee) {
+      const end = endpointArrow(endDecoration, ee, styles);
+      frags.end = end;
+      frags.elements.push(end);
+    }
   }
   return frags;
 }
@@ -49,7 +54,8 @@ export function update(frags: EdgeFragments, { start, end, startDecoration, endD
 
   const r = basic.start({ start, end });
   if (startDecoration) {
-    if (r) {
+    const se = basic.start({ start, end });
+    if (se) {
       const start = endpointArrow(startDecoration, r, styles);
       if (frags.start) {
         frags.start.x = start.x;
@@ -64,7 +70,8 @@ export function update(frags: EdgeFragments, { start, end, startDecoration, endD
     }
   }
   if (endDecoration) {
-    if (r) {
+    const ee = basic.end({ start, end });
+    if (ee) {
       const end = endpointArrow(endDecoration, r, styles);
       if (frags.end) {
         frags.end.x = end.x;

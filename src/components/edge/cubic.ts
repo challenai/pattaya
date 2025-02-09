@@ -19,7 +19,7 @@ export function fragments({ points, startDecoration, endDecoration }: CubicBezie
   };
   const frags: EdgeFragments = {
     line: lineFrag,
-    elements: [],
+    elements: [lineFrag],
   };
   if (startDecoration) {
     const se = cubic.start(points);
