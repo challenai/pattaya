@@ -5,7 +5,7 @@ import { circle, rectangle } from "impressionist";
 
 export interface SliderProps {
   totalLength: number;
-  slideLength: number;
+  progress: number;
   barWidth: number;
   slideWidth: number;
   radius: number;
@@ -42,11 +42,14 @@ export function applyStyle(shape: Shapes, styles: SliderStyles) {
   shape![2].opts = toOptsButton(styles);
 };
 
-export function shapes({ totalLength, slideLength, slideWidth, barWidth, radius }: SliderProps, styles: SliderStyles): Shapes {
+export function shapes({ totalLength, progress, slideWidth, barWidth, radius }: SliderProps, styles: SliderStyles): Shapes {
+  if (progress > 1) progress = 1;
+  if (progress < 0) progress = 0;
+  const slideLength = progress * totalLength;
   return [
     // 0. bar
     {
-      path: wireframeBar(slideLength, barWidth, totalLength),
+      path: wireframeBar(slideLength, barWidth, totalLength - slideLength),
       opts: {
         fill: styles.barBackground,
         stroke: styles.barBorder,
@@ -84,8 +87,11 @@ export function wireframeButton(slideLength: number, radius: number): string {
   return circle.basic(slideLength, 0, radius);
 };
 
-export function update(shapes: Shapes, { totalLength, slideLength, slideWidth, barWidth, radius }: SliderProps) {
-  shapes![0].path = wireframeBar(slideLength, barWidth, totalLength);
+export function update(shapes: Shapes, { totalLength, progress, slideWidth, barWidth, radius }: SliderProps) {
+  if (progress > 1) progress = 1;
+  if (progress < 0) progress = 0;
+  const slideLength = progress * totalLength;
+  shapes![0].path = wireframeBar(slideLength, barWidth, totalLength - slideLength);
   shapes![1].path = wireframeSlide(slideWidth, slideLength);
   shapes![2].path = wireframeButton(slideLength, radius);
 };
