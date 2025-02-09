@@ -1,7 +1,7 @@
 import type { MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
 import type { Endpoint, Point } from "./point";
-import { type Shapes, rotation } from "../../core";
+import { type Shapes, points2Radians } from "../../core";
 import { bezier } from "impressionist";
 
 function toOpts(styles: LineStyles): MeshOptions {
@@ -40,7 +40,7 @@ export function start(points: Point[]): Endpoint | null {
   return {
     x: m.x,
     y: m.y,
-    rotation: rotation.points2Radians(m.x, m.y, n.x, n.y),
+    rotation: points2Radians(m.x, m.y, n.x, n.y),
   };
 };
 
@@ -57,7 +57,7 @@ export function end(points: Point[]): Endpoint | null {
   return {
     x: n.x,
     y: n.y,
-    rotation: rotation.points2Radians(x, y, n.x, n.y),
+    rotation: points2Radians(x, y, n.x, n.y),
   };
 };
 

@@ -1,7 +1,7 @@
 import type { MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
 import type { Endpoint } from "./point";
-import { type Shapes, rotation } from "../../core";
+import { type Shapes, points2Radians } from "../../core";
 import { step } from "impressionist";
 
 export interface StepLineProps {
@@ -50,7 +50,7 @@ export function start(pathes: number[]): Endpoint | null {
   return {
     x: 0,
     y: 0,
-    rotation: rotation.points2Radians(0, 0, nx, ny),
+    rotation: points2Radians(0, 0, nx, ny),
   };
 }
 
@@ -77,7 +77,7 @@ export function end(pathes: number[]): Endpoint | null {
   return {
     x,
     y,
-    rotation: rotation.points2Radians(0, 0, dx, dy),
+    rotation: points2Radians(0, 0, dx, dy),
   };
 }
 

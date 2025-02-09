@@ -1,7 +1,7 @@
 import type { MeshOptions } from "@pattaya/depict/graph";
 import type { LineStyles } from "./styles";
 import type { Endpoint, Point } from "./point";
-import { type Shapes, rotation } from "../../core";
+import { type Shapes, points2Radians } from "../../core";
 import { line } from "impressionist";
 
 export interface BasicLineProps {
@@ -42,7 +42,7 @@ export function start({ start, end }: BasicLineProps): Endpoint {
   return {
     x: start.x,
     y: start.y,
-    rotation: rotation.points2Radians(start.x, start.y, end.x, end.y),
+    rotation: points2Radians(start.x, start.y, end.x, end.y),
   };
 }
 
@@ -50,7 +50,7 @@ export function end({ start, end }: BasicLineProps): Endpoint {
   return {
     x: end.x,
     y: end.y,
-    rotation: rotation.points2Radians(start.x, start.y, end.x, end.y),
+    rotation: points2Radians(start.x, start.y, end.x, end.y),
   };
 }
 
