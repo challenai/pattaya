@@ -1,6 +1,6 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { line } from "@pattaya/pattaya/primitives";
+import { line } from "@pattaya/pattaya/components";
 import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.line.background;
@@ -76,7 +76,7 @@ fGraph.onReady(() => {
 
 export const sGraph = new Graph();
 sGraph.onReady(() => {
-  const ln = line.step.shapes({ points: [130, -50, 120, -50, 90, 140, 140, -150], radius: 9 }, styles.normal);
+  const ln = line.step.shapes({ pathes: [130, -50, 120, -50, 90, 140, 140, -150], radius: 9 }, styles.normal);
   sGraph.resetGraph([[{
     x: 120,
     y: 240,

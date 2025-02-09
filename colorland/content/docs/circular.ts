@@ -1,6 +1,6 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { circular as c } from "@pattaya/pattaya/primitives";
+import { circular as c } from "@pattaya/pattaya/components";
 import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.circular.background;

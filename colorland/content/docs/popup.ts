@@ -1,6 +1,6 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { popup } from "@pattaya/pattaya/primitives";
+import { popup } from "@pattaya/pattaya/components";
 import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.popup.background;
