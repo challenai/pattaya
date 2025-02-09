@@ -1,6 +1,6 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { arrow } from "@pattaya/pattaya/primitives";
+import { arrow } from "@pattaya/pattaya/components";
 import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.arrow.background;

@@ -2,96 +2,93 @@
 title: Pattern
 description: Draw different patterns
 ---
-import Graph from "../../graph";
-import { stripe, ring, grid } from "./pattern";
+import Graph from "@/graph";
+import { sGraph, rGraph, gGraph, grid } from "./pattern";
 
 ## Stripe Pattern
 
 Example of a stripe pattern.
 
 ```js
-const layers = [
-  [
-    {
-      x: 120,
-      y: 90,
-      postRenderCallback(ctx) {
-        stripe.drawStripe(ctx, {
-          width: 100,
-          height: 100,
-          lineWidth: 1,
-          margin: 9,
-          offset: -100,
-          segements: [10, 6],
-          lineColor: "#ccf",
-        });
-      }
-    },
-  ],
-];
-graph.updateQueue(0, layers);
+import { stripe } from "@pattaya/pattaya/patterns";
+
+const n = {
+  x: 120,
+  y: 90,
+  postRenderCallback(ctx) {
+    stripe.drawStripe(ctx, {
+      width: 100,
+      height: 100,
+      lineWidth: 1,
+      margin: 9,
+      offset: -100,
+      segements: [10, 6],
+      lineColor: "#ccf",
+    });
+  }
+};
+
+graph.updateQueue(0, [[n]]);
 ```
 
-<Graph layers={stripe} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph height={400} graph={sGraph} maxLayers={1} styles={{ marginBottom: "32px" }} />
 
-## Ring Pattern
+## Circular Pattern
 
-Example of a ring pattern.
+Example of a circular pattern.
 
 ```js
-const layers = [
-  [
-    {
-      x: 120,
-      y: 90,
-      postRenderCallback(ctx) {
-        ring.drawRing(ctx, {
-          width: 100,
-          height: 100,
-          lineWidth: 1,
-          margin: 9,
-          offsetX: -20,
-          offsetY: -20,
-          segements: undefined,
-          lineColor: "#ccf",
-          backgroundColor: "transparent",
-        });
-      }
-    },
-  ],
-];
-graph.updateQueue(0, layers);
+import { circular } from "@pattaya/pattaya/patterns";
+
+const n = {
+  x: 120,
+  y: 90,
+  postRenderCallback(ctx) {
+    circular.drawCircular(ctx, {
+      width: 100,
+      height: 100,
+      lineWidth: 1,
+      margin: 9,
+      offsetX: -20,
+      offsetY: -20,
+      segements: undefined,
+      lineColor: "#ccf",
+      backgroundColor: "transparent",
+    });
+  }
+};
+
+graph.updateQueue(0, [[n]]);
 ```
 
-<Graph layers={ring} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph height={400} graph={rGraph} maxLayers={1} styles={{ marginBottom: "32px" }} />
 
 ## Grid Pattern
 
 Example of a grid pattern.
 
 ```js
-const layers = [
-  [
-    {
-      x: 120,
-      y: 90,
-      postRenderCallback(ctx) {
-        grid.drawGrid(ctx, {
-          width: 100,
-          height: 100,
-          lineWidth: 1,
-          margin: 9,
-          offsetX: -20,
-          offsetY: -20,
-          segements: undefined,
-          lineColor: "#ccf",
-          backgroundColor: "transparent",
-        });
-      }
-    },
-  ],
-];
-graph.updateQueue(0, layers);
+import { grid } from "@pattaya/pattaya/patterns";
+
+const n = {
+  x: 120,
+  y: 90,
+  postRenderCallback(ctx) {
+    grid.drawGrid(ctx, {
+      width: 100,
+      height: 100,
+      lineWidth: 1,
+      margin: 9,
+      offsetX: 3,
+      offsetY: 5,
+      segements: undefined,
+      lineColor: "#ccf",
+      backgroundColor: "transparent",
+    });
+  }
+};
+
+graph.updateQueue(0, [[n]]);
 ```
 
-<Graph layers={grid} options={[]} height={400} styles={{ marginBottom: "32px" }} />
+<Graph height={400} graph={gGraph} maxLayers={1} styles={{ marginBottom: "32px" }} />

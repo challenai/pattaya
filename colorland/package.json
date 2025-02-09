@@ -9,8 +9,8 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@pattaya/depict": "^0.5.3",
-    "@pattaya/pattaya": "^0.0.6",
+    "@pattaya/depict": "^0.6.1",
+    "@pattaya/pattaya": "^0.1.0",
     "fumadocs-core": "14.7.7",
     "fumadocs-mdx": "11.3.1",
     "fumadocs-ui": "14.7.7",
