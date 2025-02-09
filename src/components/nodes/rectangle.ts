@@ -10,7 +10,7 @@ export interface RectangleProps {
   aligned?: boolean;
 };
 
-function toOpts(styles: NodeStyles): MeshOptions {
+export function toOpts(styles: NodeStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.background) opts.fill = styles.background;
   if (styles.shadow) opts.shadowColor = styles.shadow;
