@@ -1,7 +1,7 @@
 import type { Point } from "../line/point";
-import type { LineStyles } from "../line/styles";
 import type { EdgeFragments } from "./edge";
 import type { Fragment } from "../../core";
+import type { EdgeStyles } from "./styles";
 import * as cubic from "../line/cubic";
 import { applyArrowStyles, ArrowType, endpointArrow, } from "./arrows";
 
@@ -11,11 +11,11 @@ export interface CubicBezierEdgeProps {
   endDecoration?: ArrowType;
 };
 
-export function fragments({ points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: LineStyles): EdgeFragments {
+export function fragments({ points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: EdgeStyles): EdgeFragments {
   const lineFrag: Fragment = {
     x: 0,
     y: 0,
-    shapes: cubic.shapes(points, styles),
+    shapes: cubic.shapes(points, styles.line),
   };
   const frags: EdgeFragments = {
     line: lineFrag,
@@ -24,7 +24,7 @@ export function fragments({ points, startDecoration, endDecoration }: CubicBezie
   if (startDecoration) {
     const se = cubic.start(points);
     if (se) {
-      const start = endpointArrow(startDecoration, se, styles);
+      const start = endpointArrow(startDecoration, se, styles.arrow);
       frags.start = start;
       frags.elements.push(frags.start);
     }
@@ -32,7 +32,7 @@ export function fragments({ points, startDecoration, endDecoration }: CubicBezie
   if (endDecoration) {
     const ee = cubic.end(points);
     if (ee) {
-      const end = endpointArrow(endDecoration, ee, styles);
+      const end = endpointArrow(endDecoration, ee, styles.arrow);
       frags.end = end;
       frags.elements.push(end);
     }
@@ -40,21 +40,21 @@ export function fragments({ points, startDecoration, endDecoration }: CubicBezie
   return frags;
 }
 
-export function applyStyles(fragments: EdgeFragments, styles: LineStyles) {
-  cubic.applyStyle(fragments.line.shapes, styles);
-  if (fragments.start) applyArrowStyles(fragments.start, styles);
-  if (fragments.end) applyArrowStyles(fragments.end, styles);
+export function applyStyles(fragments: EdgeFragments, styles: EdgeStyles) {
+  cubic.applyStyle(fragments.line.shapes, styles.line);
+  if (fragments.start) applyArrowStyles(fragments.start, styles.arrow);
+  if (fragments.end) applyArrowStyles(fragments.end, styles.arrow);
 };
 
-export function update(frags: EdgeFragments, { points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: LineStyles) {
-  frags.line.shapes = cubic.shapes(points, styles);
+export function update(frags: EdgeFragments, { points, startDecoration, endDecoration }: CubicBezierEdgeProps, styles: EdgeStyles) {
+  frags.line.shapes = cubic.shapes(points, styles.line);
   frags.elements.length = 0;
   frags.elements.push(frags.line);
 
   if (startDecoration) {
     const se = cubic.start(points);
     if (se) {
-      const start = endpointArrow(startDecoration, se, styles);
+      const start = endpointArrow(startDecoration, se, styles.arrow);
       if (frags.start) {
         frags.start.x = start.x;
         frags.start.y = start.y;
@@ -70,7 +70,7 @@ export function update(frags: EdgeFragments, { points, startDecoration, endDecor
   if (endDecoration) {
     const ee = cubic.end(points);
     if (ee) {
-      const end = endpointArrow(endDecoration, ee, styles);
+      const end = endpointArrow(endDecoration, ee, styles.arrow);
       if (frags.end) {
         frags.end.x = end.x;
         frags.end.y = end.y;

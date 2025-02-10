@@ -1,9 +1,9 @@
 import type { Point } from "../line/point";
-import type { LineStyles } from "../line/styles";
 import type { Fragment } from "../../core";
 import type { EdgeFragments } from "./edge";
 import * as fold from "../line/fold";
 import { applyArrowStyles, ArrowType, endpointArrow } from "./arrows";
+import type { EdgeStyles } from "./styles";
 
 export interface FoldEdgeProps {
   points: Point[];
@@ -11,11 +11,11 @@ export interface FoldEdgeProps {
   endDecoration?: ArrowType;
 };
 
-export function fragments({ points, startDecoration, endDecoration }: FoldEdgeProps, styles: LineStyles): EdgeFragments {
+export function fragments({ points, startDecoration, endDecoration }: FoldEdgeProps, styles: EdgeStyles): EdgeFragments {
   const lineFrag: Fragment = {
     x: 0,
     y: 0,
-    shapes: fold.shapes(points, styles),
+    shapes: fold.shapes(points, styles.line),
   };
   const frags: EdgeFragments = {
     line: lineFrag,
@@ -24,7 +24,7 @@ export function fragments({ points, startDecoration, endDecoration }: FoldEdgePr
   if (startDecoration) {
     const se = fold.start(points);
     if (se) {
-      const start = endpointArrow(startDecoration, se, styles);
+      const start = endpointArrow(startDecoration, se, styles.arrow);
       frags.start = start;
       frags.elements.push(frags.start);
     }
@@ -32,7 +32,7 @@ export function fragments({ points, startDecoration, endDecoration }: FoldEdgePr
   if (endDecoration) {
     const ee = fold.end(points);
     if (ee) {
-      const end = endpointArrow(endDecoration, ee, styles);
+      const end = endpointArrow(endDecoration, ee, styles.arrow);
       frags.end = end;
       frags.elements.push(end);
     }
@@ -40,21 +40,21 @@ export function fragments({ points, startDecoration, endDecoration }: FoldEdgePr
   return frags;
 }
 
-export function applyStyles(fragments: EdgeFragments, styles: LineStyles) {
-  fold.applyStyle(fragments.line.shapes, styles);
-  if (fragments.start) applyArrowStyles(fragments.start, styles);
-  if (fragments.end) applyArrowStyles(fragments.end, styles);
+export function applyStyles(fragments: EdgeFragments, styles: EdgeStyles) {
+  fold.applyStyle(fragments.line.shapes, styles.line);
+  if (fragments.start) applyArrowStyles(fragments.start, styles.arrow);
+  if (fragments.end) applyArrowStyles(fragments.end, styles.arrow);
 };
 
-export function update(frags: EdgeFragments, { points, startDecoration, endDecoration }: FoldEdgeProps, styles: LineStyles) {
-  frags.line.shapes = fold.shapes(points, styles);
+export function update(frags: EdgeFragments, { points, startDecoration, endDecoration }: FoldEdgeProps, styles: EdgeStyles) {
+  frags.line.shapes = fold.shapes(points, styles.line);
   frags.elements.length = 0;
   frags.elements.push(frags.line);
 
   if (startDecoration) {
     const se = fold.start(points);
     if (se) {
-      const start = endpointArrow(startDecoration, se, styles);
+      const start = endpointArrow(startDecoration, se, styles.arrow);
       if (frags.start) {
         frags.start.x = start.x;
         frags.start.y = start.y;
@@ -70,7 +70,7 @@ export function update(frags: EdgeFragments, { points, startDecoration, endDecor
   if (endDecoration) {
     const ee = fold.end(points);
     if (ee) {
-      const end = endpointArrow(endDecoration, ee, styles);
+      const end = endpointArrow(endDecoration, ee, styles.arrow);
       if (frags.end) {
         frags.end.x = end.x;
         frags.end.y = end.y;
