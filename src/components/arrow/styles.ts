@@ -10,7 +10,7 @@ export interface ArrowStyles {
 export function toOpts(styles: ArrowStyles): MeshOptions {
   const opts: MeshOptions = {};
   if (styles.rotation) opts.rotation = styles.rotation;
-  if (styles.width) opts.rotation = styles.width;
+  if (styles.width) opts.lineWidth = styles.width;
   if (styles.background) opts.fill = styles.background;
   if (styles.border) {
     opts.border = true;
