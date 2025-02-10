@@ -1,14 +1,15 @@
-export { default as background } from "./background";
-import palette from "./palette";
+import { normal, active, background } from "./base";
 
 export const styles = {
   normal: {
-    barBackground: palette.grotto,
-    barBorder: palette.grotto,
-    buttonBackground: palette.white,
-    buttonBorder: palette.navy,
-    slideBackground: palette.navy,
-    slideBorder: palette.navy,
+    barBackground: normal.background,
+    // don't show border in this theme
+    barBorder: normal.background,
+    buttonBackground: background,
+    buttonBorder: active.border,
+    slideBackground: active.border,
+    // don't show border in this theme
+    slideBorder: active.border,
     buttonBorderWidth: 4,
   },
 };
