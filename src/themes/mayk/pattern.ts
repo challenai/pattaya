@@ -1,12 +1,11 @@
-import { active, normal } from "./base";
+import base from "./base";
 
-export { background } from "./base";
+export const background = base.background;
 
-export const styles = {
-  normal: {
-    color: normal.line,
-  },
-  active: {
-    color: active.line,
-  },
+export const normal = {
+  color: base.normal.line,
+};
+
+export const active = {
+  color: base.active.line,
 };

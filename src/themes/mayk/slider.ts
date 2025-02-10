@@ -1,15 +1,15 @@
-import { normal, active, background } from "./base";
+import base from "./base";
 
-export const styles = {
-  normal: {
-    barBackground: normal.background,
-    // don't show border in this theme
-    barBorder: normal.background,
-    buttonBackground: background,
-    buttonBorder: active.border,
-    slideBackground: active.border,
-    // don't show border in this theme
-    slideBorder: active.border,
-    buttonBorderWidth: 4,
-  },
+export const background = base.background;
+
+export const normal = {
+  barBackground: base.normal.border,
+  // don't show border in this theme
+  barBorder: base.normal.border,
+  buttonBackground: background,
+  buttonBorder: base.active.border,
+  slideBackground: base.active.border,
+  // don't show border in this theme
+  slideBorder: base.active.border,
+  buttonBorderWidth: 4,
 };

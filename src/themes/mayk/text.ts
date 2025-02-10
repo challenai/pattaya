@@ -3,9 +3,9 @@ import base from "./base";
 export const background = base.background;
 
 export const normal = {
-  color: base.normal.line,
+  color: base.normal.fontColor,
 };
 
 export const active = {
-  color: base.active.line,
+  color: base.active.fontColor,
 };
