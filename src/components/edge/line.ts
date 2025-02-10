@@ -41,10 +41,10 @@ export function fragments({ start, end, startDecoration, endDecoration }: LineEd
   return frags;
 }
 
-export function applyStyles(fragments: EdgeFragments, styles: EdgeStyles) {
+export function applyStyles(fragments: EdgeFragments, typ: ArrowType, styles: EdgeStyles) {
   basic.applyStyle(fragments.line.shapes, styles.line);
-  if (fragments.start) applyArrowStyles(fragments.start, styles.arrow);
-  if (fragments.end) applyArrowStyles(fragments.end, styles.arrow);
+  if (fragments.start) applyArrowStyles(fragments.start, typ, styles.arrow);
+  if (fragments.end) applyArrowStyles(fragments.end, typ, styles.arrow);
 };
 
 export function update(frags: EdgeFragments, { start, end, startDecoration, endDecoration }: LineEdgeProps, styles: EdgeStyles) {

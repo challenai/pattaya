@@ -25,7 +25,7 @@ function buildArrow(typ: ArrowType, styles: ArrowStyles): Shapes {
     case ArrowType.Triangle:
       return arrow.triangle.shapes({ width: 9, height: 6 }, styles);
     case ArrowType.Vee:
-      return arrow.vee.shapes({ width: 9, low: 6, high: 9 }, styles);
+      return arrow.vee.shapes({ width: 9, low: -6, high: 9 }, styles);
   }
   return [];
 }
@@ -35,10 +35,34 @@ export function endpointArrow(typ: ArrowType, ep: Endpoint, styles: ArrowStyles)
   return {
     x: ep.x,
     y: ep.y,
-    shapes: buildArrow(typ, styles),
+    shapes: buildArrow(typ, { ...styles, rotation: ep.rotation + Math.PI / 2 }),
   };
 }
 
-export function applyArrowStyles(fragment: Fragment, styles: ArrowStyles) {
-  fragment.shapes![0].opts = arrow.toOpts(styles);
+export function applyArrowStyles(fragment: Fragment, typ: ArrowType, styles: ArrowStyles) {
+  const opts = fragment.shapes![0].opts;
+  const styles_ = { ...styles };
+  if (opts?.rotation) {
+    styles_.rotation = opts.rotation;
+  }
+  switch (typ) {
+    case ArrowType.Basic:
+      arrow.basic.applyStyle(fragment.shapes, styles_);
+      break;
+    case ArrowType.Blunt:
+      arrow.blunt.applyStyle(fragment.shapes, styles_);
+      break;
+    case ArrowType.Bullet:
+      arrow.bullet.applyStyle(fragment.shapes, styles_);
+      break;
+    case ArrowType.Dome:
+      arrow.dome.applyStyle(fragment.shapes, styles_);
+      break;
+    case ArrowType.Triangle:
+      arrow.triangle.applyStyle(fragment.shapes, styles_);
+      break;
+    case ArrowType.Vee:
+      arrow.vee.applyStyle(fragment.shapes, styles_);
+      break;
+  }
 }

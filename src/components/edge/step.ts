@@ -40,10 +40,10 @@ export function fragments({ pathes, radius, startDecoration, endDecoration }: St
   return frags;
 }
 
-export function applyStyles(fragments: EdgeFragments, styles: EdgeStyles) {
+export function applyStyles(fragments: EdgeFragments, typ: ArrowType, styles: EdgeStyles) {
   step.applyStyle(fragments.line.shapes, styles.line);
-  if (fragments.start) applyArrowStyles(fragments.start, styles.arrow);
-  if (fragments.end) applyArrowStyles(fragments.end, styles.arrow);
+  if (fragments.start) applyArrowStyles(fragments.start, typ, styles.arrow);
+  if (fragments.end) applyArrowStyles(fragments.end, typ, styles.arrow);
 };
 
 export function update(frags: EdgeFragments, { pathes, radius, startDecoration, endDecoration }: StepEdgeProps, styles: EdgeStyles) {
