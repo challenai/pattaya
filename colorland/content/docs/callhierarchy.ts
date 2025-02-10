@@ -8,23 +8,25 @@ export const background = mayk.nodes.background;
 
 export const graph = new Graph();
 
-const c1 = edge.cubic.fragments({ points: [{ x: 240, y: 100 }, { x: 360, y: 100 }, { x: 300, y: 130 }, { x: 420, y: 130 }], endDecoration: edge.ArrowType.Basic }, mayk.line.styles.normal);
-const c2 = edge.cubic.fragments({ points: [{ x: 240, y: 100 }, { x: 360, y: 100 }, { x: 300, y: 250 }, { x: 420, y: 250 }], endDecoration: edge.ArrowType.Basic }, mayk.line.styles.normal);
+const arrowType = edge.ArrowType.Basic;
+
+const c1 = edge.cubic.fragments({ points: [{ x: 240, y: 100 }, { x: 360, y: 100 }, { x: 300, y: 130 }, { x: 420, y: 130 }], endDecoration: arrowType }, mayk.edge.normal);
+const c2 = edge.cubic.fragments({ points: [{ x: 240, y: 100 }, { x: 360, y: 100 }, { x: 300, y: 250 }, { x: 420, y: 250 }], endDecoration: arrowType }, mayk.edge.normal);
 
 const r1: ShadowElement = {
   x: 120,
   y: 60,
-  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.styles.normal),
+  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.normal),
   contain: rectContain(120, 80, true),
   onMouseenter() {
-    nodes.rectangle.applyStyle(r1.shapes, mayk.nodes.styles.active);
-    edge.cubic.applyStyles(c1, mayk.line.styles.active);
-    edge.cubic.applyStyles(c2, mayk.line.styles.active);
+    nodes.rectangle.applyStyle(r1.shapes, mayk.nodes.active);
+    edge.cubic.applyStyles(c1, arrowType, mayk.edge.active);
+    edge.cubic.applyStyles(c2, arrowType, mayk.edge.active);
   },
   onMouseleave() {
-    nodes.rectangle.applyStyle(r1.shapes, mayk.nodes.styles.normal);
-    edge.cubic.applyStyles(c1, mayk.line.styles.normal);
-    edge.cubic.applyStyles(c2, mayk.line.styles.normal);
+    nodes.rectangle.applyStyle(r1.shapes, mayk.nodes.normal);
+    edge.cubic.applyStyles(c1, arrowType, mayk.edge.normal);
+    edge.cubic.applyStyles(c2, arrowType, mayk.edge.normal);
   },
   children: [
     {
@@ -36,7 +38,7 @@ const r1: ShadowElement = {
           opts: {
             textAlign: "start",
             textBaseline: "middle",
-            fill: mayk.line.styles.normal.color,
+            fill: mayk.text.normal.color,
             font: "14px Arial",
           },
         }
@@ -46,11 +48,11 @@ const r1: ShadowElement = {
       },
       onMouseenter() {
         const opts = this.texts![0].opts;
-        opts!.fill = mayk.line.styles.active.color;
+        opts!.fill = mayk.text.active.color;
       },
       onMouseleave() {
         const opts = this.texts![0].opts;
-        opts!.fill = mayk.line.styles.normal.color;
+        opts!.fill = mayk.text.normal.color;
       },
     },
   ],
@@ -58,29 +60,29 @@ const r1: ShadowElement = {
 const r2: ShadowElement = {
   x: 420,
   y: 90,
-  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.styles.normal),
+  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.normal),
   contain: rectContain(120, 80, true),
   onMouseenter() {
-    nodes.rectangle.applyStyle(r2.shapes, mayk.nodes.styles.active);
-    edge.cubic.applyStyles(c1, mayk.line.styles.active);
+    nodes.rectangle.applyStyle(r2.shapes, mayk.nodes.active);
+    edge.cubic.applyStyles(c1, arrowType, mayk.edge.active);
   },
   onMouseleave() {
-    nodes.rectangle.applyStyle(r2.shapes, mayk.nodes.styles.normal);
-    edge.cubic.applyStyles(c1, mayk.line.styles.normal);
+    nodes.rectangle.applyStyle(r2.shapes, mayk.nodes.normal);
+    edge.cubic.applyStyles(c1, arrowType, mayk.edge.normal);
   },
 }
 const r3: ShadowElement = {
   x: 420,
   y: 210,
-  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.styles.normal),
+  shapes: nodes.rectangle.shapes({ width: 120, height: 80, radius: 6, aligned: true }, mayk.nodes.normal),
   contain: rectContain(120, 80, true),
   onMouseenter() {
-    nodes.rectangle.applyStyle(r3.shapes, mayk.nodes.styles.active);
-    edge.cubic.applyStyles(c2, mayk.line.styles.active);
+    nodes.rectangle.applyStyle(r3.shapes, mayk.nodes.active);
+    edge.cubic.applyStyles(c2, arrowType, mayk.edge.active);
   },
   onMouseleave() {
-    nodes.rectangle.applyStyle(r3.shapes, mayk.nodes.styles.normal);
-    edge.cubic.applyStyles(c2, mayk.line.styles.normal);
+    nodes.rectangle.applyStyle(r3.shapes, mayk.nodes.normal);
+    edge.cubic.applyStyles(c2, arrowType, mayk.edge.normal);
   },
 }
 graph.onReady(() => {
