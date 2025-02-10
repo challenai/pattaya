@@ -1,3 +1,3 @@
-export * as circular from "./circular";
-export * as stripe from "./stripe";
-export * as grid from "./grid";
+export { type CircularProps, drawCircular } from "./circular";
+export { type StripeProps, drawStripe } from "./stripe";
+export { type GridProps, drawGrid } from "./grid";
