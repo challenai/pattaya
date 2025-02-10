@@ -9,12 +9,15 @@ const color1 = "#cacbcc";
 const color2 = "#9a9b9c";
 const color3 = "#aaabac";
 
-const lineStyles = { color: color3 };
+const edgeStyles: edge.EdgeStyles = {
+  line: { color: color3 },
+  arrow: { border: color3 },
+};
 const barStyles = {
   normal: { background: color1 },
   active: { background: color2 },
 };
-const hintStyles = { border: color3, background };
+const hintStyles: popup.PopupStyles = { border: color3, background };
 
 const data = [
   [12, 20, 52],
@@ -88,13 +91,13 @@ const arrow1 = edge.line.fragments({
   start: { x: -20, y: 0 },
   end: { x: 240, y: 0 },
   endDecoration: edge.ArrowType.Basic,
-}, lineStyles);
+}, edgeStyles);
 
 const arrow2 = edge.line.fragments({
   start: { x: 0, y: 20 },
   end: { x: 0, y: -200 },
   endDecoration: edge.ArrowType.Basic,
-}, lineStyles);
+}, edgeStyles);
 
 export const bGraph = new Graph();
 bGraph.onReady(() => {
