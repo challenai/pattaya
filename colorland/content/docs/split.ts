@@ -5,7 +5,7 @@ import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.split.background;
 
-export const styles = mayk.split.styles;
+export const styles = mayk.split;
 
 export const segementGraph = new Graph();
 

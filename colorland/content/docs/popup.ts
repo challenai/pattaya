@@ -5,7 +5,7 @@ import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.popup.background;
 
-export const styles = mayk.popup.styles;
+export const styles = mayk.popup;
 
 export const bGraph = new Graph();
 bGraph.onReady(() => {
@@ -13,7 +13,7 @@ bGraph.onReady(() => {
     {
       x: 180,
       y: 220,
-      shapes: popup.blueprint.shapes({ width: 120, height: 75, radius: 9, triangleWidth: 18, triangleHeight: 10 }, styles.normal),
+      shapes: popup.blueprint.shapes({ width: 120, height: 75, radius: 9, triangleWidth: 18, triangleHeight: 10, aligned: false }, styles.normal),
     },
   ]]);
 });

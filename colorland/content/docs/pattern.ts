@@ -1,12 +1,12 @@
 'use client'
 import { Graph } from "@pattaya/depict/graph";
-import { stripe, circular, grid } from "@pattaya/pattaya/patterns";
+import { drawCircular, drawGrid, drawStripe } from "@pattaya/pattaya/patterns";
 
 const sn = {
   x: 120,
   y: 90,
   postRenderCallback(ctx: any) {
-    stripe.drawStripe(ctx, {
+    drawStripe(ctx, {
       width: 100,
       height: 100,
       lineWidth: 1,
@@ -22,7 +22,7 @@ const rn = {
   x: 120,
   y: 90,
   postRenderCallback(ctx: any) {
-    circular.drawCircular(ctx, {
+    drawCircular(ctx, {
       width: 100,
       height: 100,
       lineWidth: 1,
@@ -38,7 +38,7 @@ const gn = {
   x: 120,
   y: 90,
   postRenderCallback(ctx: any) {
-    grid.drawGrid(ctx, {
+    drawGrid(ctx, {
       width: 100,
       height: 100,
       lineWidth: 1,

@@ -5,7 +5,7 @@ import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.slider.background;
 
-export const styles = mayk.slider.styles;
+export const styles = mayk.slider;
 
 const sliderProps = { totalLength: 200, progress: .62, barWidth: 3, slideWidth: 3, radius: 6 };
 const n: ShadowElement = {

@@ -5,7 +5,7 @@ import { mayk } from "@pattaya/pattaya/themes";
 
 export const background = mayk.line.background;
 
-export const styles = mayk.line.styles;
+export const styles = mayk.line;
 
 export const lnGraph = new Graph();
 lnGraph.onReady(() => {
