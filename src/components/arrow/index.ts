@@ -1,4 +1,4 @@
-export type { ArrowStyles } from "./styles";
+export { type ArrowStyles, toOpts } from "./styles";
 export * as styles from "./styles";
 export * as basic from "./basic";
 export * as blunt from "./blunt";

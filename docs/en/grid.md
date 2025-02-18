@@ -1,0 +1,33 @@
+# Pattern
+
+## Grid Pattern
+
+Example of a grid pattern.
+
+```js
+import { grid } from "@pattaya/pattaya/patterns";
+
+const n = {
+  x: 120,
+  y: 90,
+  postRenderCallback(ctx) {
+    grid.drawGrid(ctx, {
+      width: 100,
+      height: 100,
+      lineWidth: 1,
+      margin: 9,
+      offsetX: 3,
+      offsetY: 5,
+      segements: undefined,
+      lineColor: "#ccf",
+      backgroundColor: "transparent",
+    });
+  }
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+```pty
+ptyGridPattern
+```

@@ -1,5 +1,5 @@
-const palette = {
-  white: "#FFFFFF",
+export default {
+  flat: "#FFFFFF",
   baby: "#BFD7ED",
   grotto: "#60A3D9",
   royal: "#0074B7",
@@ -7,5 +7,3 @@ const palette = {
   comp1: "#EFFEFA",
   comp2: "#FAFBFF",
 };
-
-export default palette;

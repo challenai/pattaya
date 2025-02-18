@@ -4,11 +4,12 @@ import type { Shapes } from "../../core";
 import { common } from "impressionist";
 
 export interface PopupProps {
-  width: number,
-  height: number,
-  triangleWidth: number,
-  triangleHeight: number,
-  radius?: number,
+  width: number;
+  height: number;
+  triangleWidth: number;
+  triangleHeight: number;
+  radius?: number;
+  aligned?: boolean;
 };
 
 export function toOpts(styles: PopupStyles): MeshOptions {
@@ -38,9 +39,11 @@ export function shapes(props: PopupProps, style: PopupStyles): Shapes {
   ];
 }
 
-export function wireframe({ width, height, radius, triangleHeight, triangleWidth }: PopupProps): string {
-  if (!radius) radius = 0;
-  return common.popup(0, 0, width, height, radius, triangleWidth, triangleHeight);
+export function wireframe({ width, height, radius, triangleHeight, triangleWidth, aligned }: PopupProps): string {
+  if (aligned) {
+    return common.popupAligned(0, 0, width, height, triangleWidth, triangleHeight, radius);
+  }
+  return common.popup(0, 0, width, height, triangleWidth, triangleHeight, radius);
 }
 
 export function update(shapes: Shapes, props: PopupProps) {

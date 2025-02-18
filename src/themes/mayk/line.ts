@@ -1,13 +1,11 @@
-export { default as background } from "./background";
-import palette from "./palette";
+import base from "./base";
 
-export const styles = {
-  normal: {
-    color: palette.baby,
-    width: 1,
-  },
-  active: {
-    color: palette.navy,
-    width: 1,
-  },
+export const background = base.background;
+
+export const normal = {
+  color: base.normal.line,
+};
+
+export const active = {
+  color: base.active.line,
 };

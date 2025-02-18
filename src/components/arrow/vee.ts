@@ -1,24 +1,13 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
-import type { ArrowStyles } from "./styles";
+import { toOpts, type ArrowStyles } from "./styles";
 import type { Shapes } from "../../core";
 import { arrow } from "impressionist";
+
+export { toOpts } from "./styles";
 
 export interface VeeProps {
   width: number;
   low: number;
   high: number;
-};
-
-export function toOpts(styles: ArrowStyles): MeshOptions {
-  const opts: MeshOptions = {};
-  if (styles.background) opts.fill = styles.background;
-  if (styles.border) {
-    opts.border = true;
-    opts.stroke = styles.border;
-  } else {
-    opts.border = false;
-  }
-  return opts;
 };
 
 export function applyStyle(shape: Shapes, style: ArrowStyles) {
