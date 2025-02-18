@@ -1,9 +1,6 @@
----
-title: Line
-description: Lines, fold lines, curves, step lines
----
-import Graph from "@/graph";
-import { lnGraph, qGraph, cGraph, fGraph, sGraph, background } from "./line";
+# Line
+
+Lines, fold lines, curves, step lines
 
 ## Line
 
@@ -22,7 +19,9 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph height={400} graph={lnGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyLine
+```
 
 ## Quadratic Bezier Curve
 
@@ -41,7 +40,9 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph height={400} graph={qGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyQuadratic
+```
 
 ## Cubic Bezier Curve
 
@@ -60,7 +61,9 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph height={400} graph={cGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyCubic
+```
 
 ## Fold Line
 
@@ -79,7 +82,9 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph height={400} graph={fGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyFold
+```
 
 ## Step Line
 
@@ -98,5 +103,7 @@ const layers = [
 graph.updateQueue(0, layers);
 ```
 
-<Graph height={400} graph={sGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyStep
+```
 

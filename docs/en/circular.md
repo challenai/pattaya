@@ -1,9 +1,4 @@
----
-title: Circular
-description: Draw circular pattern
----
-import Graph from "@/graph";
-import { sGraph, pGraph, background } from "./circular";
+# Circular
 
 ## Sector
 
@@ -18,7 +13,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={sGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptySector
+```
 
 ## Pie
 
@@ -33,4 +30,6 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={pGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyPie
+```

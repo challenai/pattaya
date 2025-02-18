@@ -1,9 +1,4 @@
----
-title: Button
-description: Buttons
----
-import Graph from "@/graph";
-import { graph, background } from "./button";
+# Button
 
 ## TextButton
 
@@ -67,4 +62,6 @@ graph.onReady(() => {
 });
 ```
 
-<Graph height={400} graph={graph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyButton
+```

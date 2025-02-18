@@ -1,9 +1,6 @@
----
-title: Popup
-description: A popup to hold content
----
-import Graph from "@/graph";
-import { bGraph, cGraph, background } from "./popup";
+# Popup
+
+A popup to hold content
 
 ## Basic
 
@@ -18,7 +15,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={bGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyBasicPopup
+```
 
 ## Event
 
@@ -46,7 +45,9 @@ graph.updateQueue(0, [[n]]);
 
 Hover the popup to trigger an event.
 
-<Graph height={400} graph={cGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyPopupToggle
+```
 
 ## API
 

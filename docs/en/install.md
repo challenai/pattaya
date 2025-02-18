@@ -1,18 +1,15 @@
----
-title: Installation
-description: Let's give it a try now.
----
+# Install
 
-## Install
+Let's give it a try now.
 
-### Depict
+## Depict
 
 Pattaya choose the Depict to handle events and actual render,  
 so you need to install Depict to run the Pattaya application.
 
 `npm install @pattaya/depict --save`
 
-### Pattaya
+## Pattaya
 
 Install Pattaya from npm source.
 

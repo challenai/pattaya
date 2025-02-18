@@ -1,9 +1,6 @@
----
-title: Slider
-description: Sliders are used to control progress
----
-import Graph from "@/graph";
-import { bGraph, background } from "./slider";
+# Slider
+
+Sliders are used to control progress
 
 ## Basic
 
@@ -27,7 +24,9 @@ const n: ShadowElement = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={bGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptySlider
+```
 
 ## API
 

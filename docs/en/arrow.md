@@ -1,9 +1,6 @@
----
-title: Arrow
-description: Different styles of arrow tops.
----
-import Graph from "@/graph";
-import { bGraph, background, tGraph, vGraph, dGraph, blGraph, buGraph } from "./arrow";
+# Arrow
+
+Different styles of arrow tops.
 
 ## Basic Arrow
 
@@ -18,7 +15,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={bGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyBasicArrow
+```
 
 ## Vee Arrow
 
@@ -38,7 +37,9 @@ const n2 = {
 graph.updateQueue(0, [[n1, n2]]);
 ```
 
-<Graph height={400} graph={vGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyVeeArrow
+```
 
 ## Triangle Arrow
 
@@ -53,7 +54,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={tGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyTriangleArrow
+```
 
 ## Bullet Arrow
 
@@ -68,7 +71,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={buGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyBulletArrow
+```
 
 ## Blunt Arrow
 
@@ -83,7 +88,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={blGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyBluntArrow
+```
 
 ## Dome Arrow
 
@@ -98,7 +105,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={dGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyDomeArrow
+```
 
 ## API
 

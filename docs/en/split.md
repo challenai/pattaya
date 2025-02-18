@@ -1,9 +1,6 @@
----
-title: Split
-description: Split the background to Segements, Grids
----
-import Graph from "@/graph";
-import { segementGraph, gridGraph, background } from "./split";
+# Split
+
+Split the background to Segements, Grids
 
 ## Segement
 
@@ -16,7 +13,9 @@ graph.onReady(() => {
 });
 ```
 
-<Graph height={400} graph={segementGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptySegementSplit
+```
 
 ## Grid
 
@@ -29,7 +28,9 @@ graph.onReady(() => {
 });
 ```
 
-<Graph height={400} graph={gridGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyGridSplit
+```
 
 ## API
 

@@ -1,9 +1,6 @@
----
-title: Nodes
-description: Basic shapes include circle, rectangle, diamond and more...
----
-import Graph from "@/graph";
-import { cGraph, rGraph, dGraph, background } from "./nodes";
+# Nodes
+
+Basic shapes include circle, rectangle, diamond and more...
 
 ## Circle
 
@@ -18,7 +15,9 @@ const layers = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={cGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyCircle
+```
 
 ## Diamond
 
@@ -33,7 +32,9 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={dGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyDiamond
+```
 
 ## Rectangle
 
@@ -48,4 +49,10 @@ const n = {
 graph.updateQueue(0, [[n]]);
 ```
 
-<Graph height={400} graph={rGraph} maxLayers={1} styles={{ backgroundColor: background, marginBottom: "32px" }} />
+```pty
+ptyRectangle
+```
+
+```pty
+ptyGrid
+```
