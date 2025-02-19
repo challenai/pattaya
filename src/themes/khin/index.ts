@@ -1,5 +1,4 @@
 export { background, muted, normal, active, focus } from "./base";
-export * as palette from "./palette";
 export * as arrow from "./arrow";
 export * as card from "./card";
 export * as popup from "./popup";

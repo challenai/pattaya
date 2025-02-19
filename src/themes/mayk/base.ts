@@ -2,6 +2,13 @@ import palette from "./palette";
 
 export const background = palette.flat;
 
+export const muted = {
+  line: palette.baby,
+  border: palette.grotto,
+  background: palette.flat,
+  fontColor: palette.royal,
+}
+
 export const normal = {
   line: palette.baby,
   border: palette.grotto,
@@ -23,4 +30,4 @@ export const focus = {
   fontColor: palette.navy,
 }
 
-export default { normal, active, focus, background };
+export default { muted, normal, active, focus, background };

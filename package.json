@@ -27,6 +27,14 @@
     "./mayk": {
       "types": "./types/themes/mayk/index.d.ts",
       "default": "./lib/themes/mayk/index.min.js"
+    },
+    "./khin": {
+      "types": "./types/themes/khin/index.d.ts",
+      "default": "./lib/themes/khin/index.min.js"
+    },
+    "./chaya": {
+      "types": "./types/themes/chaya/index.d.ts",
+      "default": "./lib/themes/chaya/index.min.js"
     }
   },
   "files": [
