@@ -5,7 +5,7 @@ export const muted = {
   border: "#ccc",
   shadow: "rgba(102, 102, 102, .2)",
   shadowBlur: 5,
-  line: "#8476FA",
+  line: "#ccc",
   fontColor: "#858494",
 }
 
@@ -14,13 +14,13 @@ export const normal = {
   border: "#999",
   shadow: "rgba(102, 102, 102, .2)",
   shadowBlur: 12,
-  line: "#8476FA",
+  line: "#ccc",
   fontColor: "#858494",
 }
 
 export const active = {
   background: "#fff",
-  line: "#ccc",
+  line: "#8476FA",
   fontColor: "#8476FA",
   border: "#F5718D",
   shadow: "rgba(255, 0, 0, .3)",
@@ -32,7 +32,7 @@ export const focus = {
   border: "#8476FA",
   shadow: "rgba(255, 0, 255, .3)",
   shadowBlur: 24,
-  line: "#ccc",
+  line: "#8476FA",
   fontColor: "#8476FA",
 }
 
