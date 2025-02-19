@@ -7,10 +7,12 @@ Split the background to Segements, Grids
 Example of a segement.
 
 ```js
-graph.onReady(() => {
-  const btn = button.basic.TextButton(240, 180, { text: "click me", radius: 8, styles, textBoundingBox: graph.boundingBox.bind(graph) });
-  graph.resetGraph([[btn]]);
-});
+const n1 = {
+  x: 200,
+  y: 100,
+  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, radius: 5, vertical: false }, theme.split.normal),
+};
+graph.updateQueue(0, [[n]]);
 ```
 
 ```pty
@@ -22,10 +24,19 @@ ptySegementSplit
 Example of a grid.
 
 ```js
-graph.onReady(() => {
-  const btn = button.basic.TextButton(240, 180, { text: "click me", radius: 8, styles, textBoundingBox: graph.boundingBox.bind(graph) });
-  graph.resetGraph([[btn]]);
-});
+const n = {
+  x: 200,
+  y: 100,
+  shapes: split.grid.shapes({
+    width: 196, height: 128, radius: 5, vertical: false,
+    units: [
+      { offset: 32, offsets: [20, 86, 108, 120, 160] },
+      { offset: 68, offsets: [64, 126] },
+      { offset: 128, offsets: [30, 52, 65, 122] },
+    ],
+  }, theme.split.normal),
+};
+graph.updateQueue(0, [[n]]);
 ```
 
 ```pty
