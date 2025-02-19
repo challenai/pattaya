@@ -52,7 +52,3 @@ graph.updateQueue(0, [[n]]);
 ```pty
 ptyRectangle
 ```
-
-```pty
-ptyGrid
-```
