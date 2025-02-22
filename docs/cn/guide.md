@@ -1,23 +1,23 @@
 # Quick Start
 
-Pattaya can be built with any framework, from Vue, React, Svelte, web components, to Vanilla Javascript or even electron and Webview.  
+Pattaya 可以和任何框架一起工作，比如 Vue, React, Svelte, Web components，纯粹 HTML Javascript 页面，甚至 electron 或者 webview。
 
 ## Install
 
-Pattaya choose the Depict to handle events and actual render,  
-so you need to install Depict to run the Pattaya application.
+Pattaya 选择 [Depict](https://github.com/challenai/depict) 来处理底层事件和渲染。
+所以你需要先安装 Depict。
 
 `npm install @pattaya/depict --save`
 
-Install Pattaya from npm source.
+然后从 npm 安装 Pattaya。
 
 `npm install @pattaya/pattaya --save`
 
 ## Run Pattaya in React 
 
-Here is an example to run Pattaya in React.
+这里有一个 React 开始的示例
 
-> you can find more examples with other frameworks in Depict Github repo.
+> 你可以在 Depict 的 Github 找到更多其他框架的示例。
 
 ```tsx
 import { NonWorkerDepict } from "@pattaya/depict/nonworker";

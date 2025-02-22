@@ -1,7 +1,14 @@
 # Introduction
 
-Welcome to the Pattaya!
+Welcome to Pattaya!  
 
-- lightweight, clean, minimize size 1kb
-- component oriented, but no annoying props delievery, rerender as you expect
-- primitives based,
+Pattaya is a modern JavaScript graphics library.  
+
+Pattaya provides **Primitives** such as lines, squares, and bubbles, allowing you to create your own unique graphics.    
+Whether it's for data visualization, diagrams, architectural drawings, or directly building a UI, Pattaya has you covered.   
+
+Pattaya focuses on maintainability, ease of understanding, and performance. With Pattaya, you learn less and build more.  
+
+Read more about Pattaya: **[Pattaya Design Philosophy](/design)**  
+
+Or get started quickly: **[Quick Start](/guide)**  

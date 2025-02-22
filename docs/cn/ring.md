@@ -1,0 +1,33 @@
+# Pattern
+
+## Ring Pattern
+
+Example of a circular pattern.
+
+```js
+import { drawCircular } from "@pattaya/pattaya/patterns";
+
+const n = {
+  x: 120,
+  y: 90,
+  postRenderCallback(ctx) {
+    drawCircular(ctx, {
+      width: 100,
+      height: 100,
+      lineWidth: 1,
+      margin: 9,
+      offsetX: -20,
+      offsetY: -20,
+      segements: undefined,
+      lineColor: "#ccf",
+      backgroundColor: "transparent",
+    });
+  }
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+```pty
+ptyRingPattern
+```
