@@ -82,18 +82,26 @@ const r3: ShadowElement = {
     edge.cubic.applyStyles(c2, arrowType, theme.ptr.edge.normal);
   },
 }
+
+const layers: ShadowElement[] = [
+  r1,
+  r2,
+  r3,
+  { x: 0, y: 0, children: c1.elements },
+  { x: 0, y: 0, children: c2.elements },
+];
+
 graph.onReady(() => {
   graph.updateLayerOptions(0, { dynamic: true });
-  graph.resetGraph([[
-    r1,
-    r2,
-    r3,
-    { x: 0, y: 0, children: c1.elements },
-    { x: 0, y: 0, children: c2.elements },
-  ]]);
+  graph.resetGraph([layers]);
 });
 
 function applyTheme() {
+  nodes.rectangle.applyStyle(r1.shapes, theme.ptr.nodes.normal);
+  nodes.rectangle.applyStyle(r2.shapes, theme.ptr.nodes.normal);
+  nodes.rectangle.applyStyle(r3.shapes, theme.ptr.nodes.normal);
+  edge.cubic.applyStyles(c1, arrowType, theme.ptr.edge.normal);
+  edge.cubic.applyStyles(c2, arrowType, theme.ptr.edge.normal);
   graph.renderAll();
 }
 
@@ -103,4 +111,5 @@ export default {
   ident,
   graph,
   applyTheme,
+  layers,
 }
