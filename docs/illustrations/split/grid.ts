@@ -21,7 +21,7 @@ const n2 = {
   x: 480,
   y: 100,
   shapes: split.grid.shapes({
-    width: 196, height: 128, radius: 5, vertical: false,
+    width: 196, height: 128, vertical: false,
     units: [
       { offset: 32, offsets: [20, 86, 108, 120, 160] },
       { offset: 68, offsets: [64, 126] },

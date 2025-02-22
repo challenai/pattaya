@@ -13,7 +13,7 @@ const n1 = {
 const n2 = {
   x: 480,
   y: 100,
-  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, radius: 5, vertical: false }, theme.ptr.split.active),
+  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, vertical: false }, theme.ptr.split.active),
 };
 
 const graph = new Graph();
