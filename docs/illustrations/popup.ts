@@ -25,8 +25,11 @@ function applyTheme() {
   graph.renderAll();
 }
 
+const layers = [n1];
+
 export default {
   ident,
   graph,
   applyTheme,
+  layers,
 }
