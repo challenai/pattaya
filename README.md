@@ -1,7 +1,8 @@
 # Pattaya
 
-pattaya is an experimental graph library,
-It's still in the design period, so don't rely on this library in production now.
+Pattaya is a JavaScript library for interactive Graph.
+Pattaya focus on understanable, maintainable and performance.
+The primitives based design allows you to invest less and get more.
 
 ## Installation
 

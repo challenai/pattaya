@@ -1,4 +1,3 @@
-'use client'
 import { Graph, type Text, type ShadowElement } from "@pattaya/depict/graph";
 import { edge, nodes, popup } from "@pattaya/pattaya/components";
 import { animationRunning, newAnimationStore, startAnimation, updateAnimation, rectContain } from "@pattaya/pattaya/core";
@@ -63,14 +62,14 @@ function Bar(x: number, y: number, width: number, height: number): ShadowElement
       }
     },
     contain,
-    onMouseenter(render, x1, y1) {
+    onMouseenter(_render, x1, y1) {
       startAnimation(this.data.animation, 250, barStyles.active);
       hint.x = x1 + this.x;
       hint.y = y1 + this.y - height / 2 - 5;
       hint.hidden = false;
       hintText.content = `${height}`;
     },
-    onMouseleave(render, x1, y1) {
+    onMouseleave(_render, x1, y1) {
       startAnimation(this.data.animation, 250, barStyles.normal);
       hint.x = x1 + this.x;
       hint.y = y1 + this.y - height / 2;
@@ -99,13 +98,23 @@ const arrow2 = edge.line.fragments({
   endDecoration: edge.ArrowType.Basic,
 }, edgeStyles);
 
-export const bGraph = new Graph();
-bGraph.onReady(() => {
-  bGraph.updateLayerOptions(0, { update: true, dynamic: true });
-  bGraph.resetGraph([[
+export const graph = new Graph();
+graph.onReady(() => {
+  graph.updateLayerOptions(0, { update: true, dynamic: true });
+  graph.resetGraph([[
     ...bars,
     { x: 180, y: 280, children: arrow1.elements },
     { x: 180, y: 280, children: arrow2.elements },
     hint,
   ]]);
 });
+
+const ident = "ptyBarChart";
+
+function applyTheme() { }
+
+export default {
+  ident,
+  graph,
+  applyTheme,
+}

@@ -1,6 +1,5 @@
-'use client'
-import { Graph } from "@pattaya/depict/graph";
 import type { ShadowElement, TextOptions } from "@pattaya/depict/graph";
+import { Graph } from "@pattaya/depict/graph";
 import { nodes } from "@pattaya/pattaya/components";
 import { animationRunning, newAnimationStore, startAnimation, updateAnimation, rectContain } from "@pattaya/pattaya/core";
 
@@ -69,9 +68,8 @@ export function TextButton(x: number, y: number, { radius, styles, text, textBou
 }
 
 // -----------------------------------------------
-export const graph = new Graph();
-
-export const background = "#fff";
+const ident = "ptyButton";
+const graph = new Graph();
 
 const styles = {
   common: {
@@ -97,3 +95,11 @@ graph.onReady(() => {
   graph.updateLayerOptions(0, { dynamic: true, update: true });
   graph.resetGraph([[btn]]);
 });
+
+function applyTheme() { }
+
+export default {
+  ident,
+  graph,
+  applyTheme,
+}
