@@ -2,11 +2,22 @@
 
 Pattaya can be built with any framework, from Vue, React, Svelte, web components, to Vanilla Javascript or even electron and Webview.  
 
+## Install
+
+Pattaya choose the Depict to handle events and actual render,  
+so you need to install Depict to run the Pattaya application.
+
+`npm install @pattaya/depict --save`
+
+Install Pattaya from npm source.
+
+`npm install @pattaya/pattaya --save`
+
+## Run Pattaya in React 
+
 Here is an example to run Pattaya in React.
 
-> you can find more examples in Depict Github repo.
-
-## run Pattaya in React 
+> you can find more examples with other frameworks in Depict Github repo.
 
 ```tsx
 import { NonWorkerDepict } from "@pattaya/depict/nonworker";
