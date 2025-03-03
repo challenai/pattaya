@@ -1,0 +1,47 @@
+# 主题
+
+Pattaya 提供多种预制的主题，可以直接导入。
+
+## 如何使用主题
+
+```js
+import * as chaya from "@pattaya/pattaya/chaya";
+import { nodes } from "@pattaya/pattaya/components";
+
+const n = {
+  x: 180,
+  y: 220,
+  // 这里的圆形使用了 chaya 的活跃样式
+  shapes: nodes.circle.shapes({ radius: 64 }, chaya.nodes.active),
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+## mayk
+
+mayk 是默认的亮色主题，提供简单干净的体验。
+
+```js
+import * as mayk from "@pattaya/pattaya/mayk";
+```
+
+## chaya
+
+chaya 是一个默认的暗色主题，以黑色为主，加上少量天蓝色点缀。
+
+```js
+import * as chaya from "@pattaya/pattaya/chaya";
+```
+
+## khin
+
+khin 是一个带阴影的亮色主题。
+
+```js
+import * as khin from "@pattaya/pattaya/khin";
+```
+
+## 自定义主题
+
+TODO
