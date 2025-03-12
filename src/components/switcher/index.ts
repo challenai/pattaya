@@ -1,2 +1,2 @@
-export type { SwitchStyles } from "./styles";
+export type { SwitcherStyles, SwitcherStylesItem } from "./styles";
 export * as basic from "./basic";
