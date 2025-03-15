@@ -50,27 +50,17 @@ export function shapes({ totalLength, progress, slideWidth, barWidth, radius }: 
     // 0. bar
     {
       path: wireframeBar(slideLength, barWidth, totalLength - slideLength),
-      opts: {
-        fill: styles.barBackground,
-        stroke: styles.barBorder,
-      },
+      opts: toOptsBar(styles),
     },
     // 1. slide
     {
       path: wireframeSlide(slideWidth, slideLength),
-      opts: {
-        fill: styles.slideBackground,
-        stroke: styles.slideBorder,
-      }
+      opts: toOptsSlide(styles),
     },
     // 2. button
     {
       path: wireframeButton(slideLength, radius),
-      opts: {
-        fill: styles.buttonBackground,
-        stroke: styles.buttonBorder,
-        lineWidth: styles.buttonBorderWidth,
-      },
+      opts: toOptsButton(styles),
     },
   ];
 };
