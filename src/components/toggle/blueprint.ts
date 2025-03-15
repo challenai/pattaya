@@ -1,5 +1,5 @@
 import type { MeshOptions } from "@pattaya/depict/graph";
-import type { ToggleStylesItem, ToggleStyles } from "./styles";
+import type { ToggleStyles } from "./styles";
 import type { Shapes } from "../../core";
 import { capsule, circle } from "impressionist";
 
@@ -10,7 +10,7 @@ export interface ToggleProps {
   active: boolean;
 };
 
-function toOptsBackground(styles: ToggleStylesItem): MeshOptions {
+function toOptsBackground(styles: ToggleStyles): MeshOptions {
   const opts: MeshOptions = {
     fill: styles.pannelBackground,
     stroke: styles.pannelBorder,
@@ -18,7 +18,7 @@ function toOptsBackground(styles: ToggleStylesItem): MeshOptions {
   return opts;
 };
 
-function toOptsButton(styles: ToggleStylesItem): MeshOptions {
+function toOptsButton(styles: ToggleStyles): MeshOptions {
   const opts: MeshOptions = {
     fill: styles.buttonBackground,
     stroke: styles.buttonBorder,
@@ -28,23 +28,21 @@ function toOptsButton(styles: ToggleStylesItem): MeshOptions {
 };
 
 export function applyStyle(shape: Shapes, active: boolean, styles: ToggleStyles) {
-  const ptr = active ? styles.active : styles.normal;
-  shape![0].opts = toOptsBackground(ptr);
-  shape![1].opts = toOptsButton(ptr);
+  shape![0].opts = toOptsBackground(styles);
+  shape![1].opts = toOptsButton(styles);
 };
 
 export function shapes({ width, height, radius, active }: ToggleProps, styles: ToggleStyles): Shapes {
-  const ptr = active ? styles.active : styles.normal;
   return [
     // 0. background
     {
       path: wireframeBackground(width, height),
-      opts: toOptsBackground(ptr),
+      opts: toOptsBackground(styles),
     },
     // 1. button
     {
       path: wireframeButton(width, height, radius, active),
-      opts: toOptsButton(ptr),
+      opts: toOptsButton(styles),
     },
   ];
 };
