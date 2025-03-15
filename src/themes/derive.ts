@@ -1,5 +1,5 @@
 import type { BaseStyles } from "./base";
-import type { ArrowTheme, CircularTheme, EdgeTheme, LineTheme, NodesTheme, PopupTheme, SliderTheme, SplitTheme, TextTheme, Theme } from "./theme";
+import type { ArrowTheme, CircularTheme, EdgeTheme, LabelTheme, LineTheme, NodesTheme, PopupTheme, ScaleTheme, SliderTheme, SplitTheme, TextTheme, Theme, TickTheme, ToggleTheme } from "./theme";
 
 export function deriveNodesTheme(styles: BaseStyles): NodesTheme {
   return {
@@ -137,7 +137,7 @@ export function derivePopupTheme(styles: BaseStyles): PopupTheme {
   };
 }
 
-// TODO
+// TODO: improve ?
 export function deriveSliderTheme(styles: BaseStyles): SliderTheme {
   return {
     barBackground: styles.normal.border,
@@ -196,6 +196,52 @@ export function deriveTextTheme(styles: BaseStyles): TextTheme {
   };
 }
 
+export function deriveToggleTheme(styles: BaseStyles): ToggleTheme {
+  return {
+    normal: {
+      buttonBackground: styles.normal.border,
+      buttonBorder: styles.normal.border,
+      pannelBackground: styles.backgroundColor,
+      pannelBorder: styles.normal.border,
+    },
+    active: {
+      buttonBackground: styles.active.border,
+      buttonBorder: styles.active.border,
+      pannelBackground: styles.backgroundColor,
+      pannelBorder: styles.active.border,
+    },
+  };
+}
+
+export function deriveScaleTheme(styles: BaseStyles): ScaleTheme {
+  return {
+    normal: {
+      border: styles.normal.border,
+    },
+    active: {
+      border: styles.active.border,
+    },
+  };
+}
+
+export function deriveLabelTheme(styles: BaseStyles): LabelTheme {
+  return {
+    normal: {
+      border: styles.normal.border,
+    },
+    active: {
+      border: styles.active.border,
+    },
+  };
+}
+
+export function deriveTickTheme(styles: BaseStyles): TickTheme {
+  return {
+    borderTick: styles.active.border,
+    borderBaseline: styles.muted.border,
+  };
+}
+
 export function deriveTheme(styles: BaseStyles): Theme {
   return {
     nodes: deriveNodesTheme(styles),
@@ -207,5 +253,9 @@ export function deriveTheme(styles: BaseStyles): Theme {
     slider: deriveSliderTheme(styles),
     split: deriveSplitTheme(styles),
     text: deriveTextTheme(styles),
+    scale: deriveScaleTheme(styles),
+    toggle: deriveToggleTheme(styles),
+    label: deriveLabelTheme(styles),
+    tick: deriveTickTheme(styles),
   }
 }

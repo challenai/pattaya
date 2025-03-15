@@ -1,12 +1,16 @@
 import type { ArrowStyles } from "../components/arrow";
 import type { CircularStyles } from "../components/circular";
 import type { EdgeStyles } from "../components/edge";
+import type { LabelStyles } from "../components/label";
 import type { LineStyles } from "../components/line";
 import type { NodeStyles } from "../components/nodes";
 import type { PopupStyles } from "../components/popup";
+import type { ScaleStyles } from "../components/scale";
 import type { SliderStyles } from "../components/slider";
 import type { SplitStyles } from "../components/split";
 import type { TextStyles } from "../components/text";
+import type { TickStyles } from "../components/tick";
+import type { ToggleStyles } from "../components/toggle";
 
 export interface NodesTheme {
   muted: NodeStyles,
@@ -54,6 +58,23 @@ export interface SplitTheme {
   focus: SplitStyles,
 };
 
+export interface ScaleTheme {
+  normal: ScaleStyles,
+  active: ScaleStyles,
+};
+
+export interface TickTheme extends TickStyles { };
+
+export interface ToggleTheme {
+  normal: ToggleStyles,
+  active: ToggleStyles,
+};
+
+export interface LabelTheme {
+  normal: LabelStyles,
+  active: LabelStyles,
+};
+
 export interface TextTheme {
   muted: TextStyles,
   normal: TextStyles,
@@ -71,4 +92,8 @@ export interface Theme {
   slider: SliderTheme,
   split: SplitTheme,
   text: TextTheme,
+  scale: ScaleTheme,
+  tick: TickTheme,
+  toggle: ToggleTheme,
+  label: LabelTheme,
 };
