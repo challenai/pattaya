@@ -69,7 +69,7 @@ export function fragments({ count, margin, offset, baseline, vertical }: TickPro
       y: 0,
       shapes: [],
     };
-    for (let i = 1; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       let current = i * margin;
       if (vertical) current = -current;
       baselineFrag.shapes!.push({
