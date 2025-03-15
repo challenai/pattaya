@@ -2,7 +2,7 @@ import type { MeshOptions } from "@pattaya/depict/graph";
 
 export interface ArrowStyles {
   border?: string;
-  background?: string;
+  background?: string | CanvasGradient | CanvasPattern;
   width?: number;
   rotation?: number;
 };
