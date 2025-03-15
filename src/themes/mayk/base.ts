@@ -1,6 +1,8 @@
+import type { BaseStyles } from "../base";
 import palette from "./palette";
 
 export const background = palette.flat;
+export const backgroundColor = palette.flat;
 
 export const muted = {
   line: palette.baby,
@@ -30,4 +32,6 @@ export const focus = {
   fontColor: palette.navy,
 }
 
-export default { muted, normal, active, focus, background };
+const base: BaseStyles = { muted, normal, active, focus, background, backgroundColor };
+
+export default base;

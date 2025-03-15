@@ -1,4 +1,7 @@
+import type { BaseStyles } from "../base";
+
 export const background = "#fff2f9";
+export const backgroundColor = background;
 
 export const muted = {
   background: "#fff",
@@ -36,4 +39,6 @@ export const focus = {
   fontColor: "#8476FA",
 }
 
-export default { muted, normal, active, focus, background };
+const base: BaseStyles = { muted, normal, active, focus, background, backgroundColor };
+
+export default base;
