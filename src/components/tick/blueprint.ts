@@ -36,8 +36,21 @@ function toOptsBaseline(styles: TickStyles): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Shapes, style: TickStyles) {
-  shape![0].opts = toOptsTick(style);
+export function applyStyles(fragments: TickFragment, styles: TickStyles) {
+  const optsTick = toOptsTick(styles);
+  if (fragments.tick.shapes) {
+    for (const s of fragments.tick.shapes) {
+      s.opts = optsTick;
+    }
+  }
+  if (fragments.baseline) {
+    const optsBaseline = toOptsBaseline(styles);
+    if (fragments.baseline.shapes) {
+      for (const s of fragments.baseline.shapes) {
+        s.opts = optsBaseline;
+      }
+    }
+  }
 };
 
 export function fragments({ count, margin, offset, baseline, vertical }: TickProps, styles: TickStyles): TickFragment {
@@ -93,5 +106,5 @@ function wireframeTick(offset: number, offsetSecondary: number, vertical?: boole
 
 export default {
   fragments,
-  applyStyle,
+  applyStyles,
 };
