@@ -1,16 +1,16 @@
 import type { MeshOptions } from "@pattaya/depict/graph";
-import type { SwitcherStylesItem, SwitcherStyles } from "./styles";
+import type { ToggleStylesItem, ToggleStyles } from "./styles";
 import type { Shapes } from "../../core";
 import { capsule, circle } from "impressionist";
 
-export interface SwitchProps {
+export interface ToggleProps {
   width: number;
   height: number;
   radius: number;
   active: boolean;
 };
 
-function toOptsBackground(styles: SwitcherStylesItem): MeshOptions {
+function toOptsBackground(styles: ToggleStylesItem): MeshOptions {
   const opts: MeshOptions = {
     fill: styles.pannelBackground,
     stroke: styles.pannelBorder,
@@ -18,7 +18,7 @@ function toOptsBackground(styles: SwitcherStylesItem): MeshOptions {
   return opts;
 };
 
-function toOptsButton(styles: SwitcherStylesItem): MeshOptions {
+function toOptsButton(styles: ToggleStylesItem): MeshOptions {
   const opts: MeshOptions = {
     fill: styles.buttonBackground,
     stroke: styles.buttonBorder,
@@ -27,13 +27,13 @@ function toOptsButton(styles: SwitcherStylesItem): MeshOptions {
   return opts;
 };
 
-export function applyStyle(shape: Shapes, active: boolean, styles: SwitcherStyles) {
+export function applyStyle(shape: Shapes, active: boolean, styles: ToggleStyles) {
   const ptr = active ? styles.active : styles.normal;
   shape![0].opts = toOptsBackground(ptr);
   shape![1].opts = toOptsButton(ptr);
 };
 
-export function shapes({ width, height, radius, active }: SwitchProps, styles: SwitcherStyles): Shapes {
+export function shapes({ width, height, radius, active }: ToggleProps, styles: ToggleStyles): Shapes {
   const ptr = active ? styles.active : styles.normal;
   return [
     // 0. background
@@ -58,7 +58,7 @@ export function wireframeButton(width: number, height: number, radius: number, a
   return circle.basic(active ? - radius - padding + width * 0.5 : radius + padding - width * 0.5, 0, radius);
 };
 
-export function update(shape: Shapes, p: SwitchProps, styles: SwitcherStyles) {
+export function update(shape: Shapes, p: ToggleProps, styles: ToggleStyles) {
   shape = shapes(p, styles);
 };
 

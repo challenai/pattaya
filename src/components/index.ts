@@ -6,7 +6,7 @@ export * as nodes from "./nodes";
 export * as popup from "./popup";
 export * as slider from "./slider";
 export * as split from "./split";
-export * as switcher from "./switcher";
+export * as toggle from "./toggle";
 export * as scale from "./scale";
 export * as label from "./label";
 export * as tick from "./tick";
