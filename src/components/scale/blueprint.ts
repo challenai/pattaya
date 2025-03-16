@@ -1,4 +1,4 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 import type { Fragment } from "../../core";
 import type { ScaleStyles } from "./styles";
 import { arrow, line } from "impressionist";

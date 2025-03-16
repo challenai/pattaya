@@ -1,4 +1,4 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 
 export interface ArrowStyles {
   border?: string;

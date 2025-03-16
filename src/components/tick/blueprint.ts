@@ -1,4 +1,4 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 import type { TickStyles } from "./styles";
 import type { Fragment, Shapes } from "../../core";
 import { line } from "impressionist";

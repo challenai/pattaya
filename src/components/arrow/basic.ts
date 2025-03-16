@@ -1,6 +1,6 @@
 import type { ArrowStyles } from "./styles";
 import type { Shapes } from "../../core";
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 import { arrow } from "impressionist";
 
 export interface BasicArrowProps {

@@ -1,4 +1,4 @@
-import type { Mesh, Text } from "@pattaya/depict/graph";
+import type { Mesh, Text } from "@challenai/depict/graph";
 
 export interface Fragment {
   x: number;
