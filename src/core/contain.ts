@@ -1,4 +1,4 @@
-import type { ContainCallback } from "@pattaya/depict/graph";
+import type { ContainCallback } from "@challenai/depict/graph";
 
 export function rectContain(width: number, height: number, aligned?: boolean): ContainCallback {
   if (aligned) {

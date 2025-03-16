@@ -1,4 +1,4 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 import type { CircularStyles } from "./styles";
 import type { Shapes } from "../../core";
 import { circular } from "impressionist";

@@ -1,7 +1,7 @@
 {
   "name": "@pattaya/pattaya",
   "module": "lib/index.min.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "exports": {
     ".": {
@@ -108,7 +108,7 @@
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "@pattaya/depict": "^0.6.3",
+    "@challenai/depict": "^0.7.0",
     "impressionist": "^1.2.1",
     "motion": "^12.0.6"
   },

@@ -1,4 +1,4 @@
-import type { MeshOptions } from "@pattaya/depict/graph";
+import type { MeshOptions } from "@challenai/depict/graph";
 import type { LineStyles } from "./styles";
 import type { Endpoint } from "./point";
 import { type Shapes, points2Radians } from "../../core";
