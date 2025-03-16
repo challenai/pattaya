@@ -1,7 +1,7 @@
 {
   "name": "@pattaya/pattaya",
   "module": "lib/index.min.js",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "type": "module",
   "exports": {
     ".": {
@@ -11,6 +11,10 @@
     "./core": {
       "types": "./types/core/index.d.ts",
       "default": "./lib/core/index.min.js"
+    },
+    "./animation": {
+      "types": "./types/animation/index.d.ts",
+      "default": "./lib/animation/index.min.js"
     },
     "./themes": {
       "types": "./types/themes/index.d.ts",
@@ -35,6 +39,58 @@
     "./chaya": {
       "types": "./types/themes/chaya/index.d.ts",
       "default": "./lib/themes/chaya/index.min.js"
+    },
+    "./components/arrow": {
+      "types": "./types/components/arrow/index.d.ts",
+      "default": "./lib/components/arrow/index.min.js"
+    },
+    "./components/circular": {
+      "types": "./types/components/circular/index.d.ts",
+      "default": "./lib/components/circular/index.min.js"
+    },
+    "./components/edge": {
+      "types": "./types/components/edge/index.d.ts",
+      "default": "./lib/components/edge/index.min.js"
+    },
+    "./components/label": {
+      "types": "./types/components/label/index.d.ts",
+      "default": "./lib/components/label/index.min.js"
+    },
+    "./components/line": {
+      "types": "./types/components/line/index.d.ts",
+      "default": "./lib/components/line/index.min.js"
+    },
+    "./components/nodes": {
+      "types": "./types/components/nodes/index.d.ts",
+      "default": "./lib/components/nodes/index.min.js"
+    },
+    "./components/popup": {
+      "types": "./types/components/popup/index.d.ts",
+      "default": "./lib/components/popup/index.min.js"
+    },
+    "./components/scale": {
+      "types": "./types/components/scale/index.d.ts",
+      "default": "./lib/components/scale/index.min.js"
+    },
+    "./components/slider": {
+      "types": "./types/components/slider/index.d.ts",
+      "default": "./lib/components/slider/index.min.js"
+    },
+    "./components/split": {
+      "types": "./types/components/split/index.d.ts",
+      "default": "./lib/components/split/index.min.js"
+    },
+    "./components/text": {
+      "types": "./types/components/text/index.d.ts",
+      "default": "./lib/components/text/index.min.js"
+    },
+    "./components/tick": {
+      "types": "./types/components/tick/index.d.ts",
+      "default": "./lib/components/tick/index.min.js"
+    },
+    "./components/toggle": {
+      "types": "./types/components/toggle/index.d.ts",
+      "default": "./lib/components/toggle/index.min.js"
     }
   },
   "files": [
@@ -52,14 +108,14 @@
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "@pattaya/depict": "^0.6.1",
-    "impressionist": "^1.2.0",
+    "@pattaya/depict": "^0.6.3",
+    "impressionist": "^1.2.1",
     "motion": "^12.0.6"
   },
   "devDependencies": {
-    "esbuild": "0.23.1",
-    "eslint": "^9.10.0",
-    "typescript-eslint": "^8.6.0"
+    "esbuild": "0.25.1",
+    "eslint": "^9.22.0",
+    "typescript-eslint": "^8.26.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

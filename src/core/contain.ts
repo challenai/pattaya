@@ -1,6 +1,6 @@
-export type ContainFunction = (x: number, y: number) => boolean;
+import type { ContainCallback } from "@pattaya/depict/graph";
 
-export function rectContain(width: number, height: number, aligned?: boolean): ContainFunction {
+export function rectContain(width: number, height: number, aligned?: boolean): ContainCallback {
   if (aligned) {
     return (x: number, y: number) => x >= 0 && y >= 0 && x <= width && y <= height;
   }

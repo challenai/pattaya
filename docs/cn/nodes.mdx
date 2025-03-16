@@ -1,0 +1,48 @@
+# 常用节点
+
+常用节点包括圆，菱形，矩形
+
+## 圆
+
+圆形示例
+
+```js
+const layers = {
+  x: 180,
+  y: 120,
+  shapes: nodes.circle.shapes({ radius: 64 }, nodeStyle.normal),
+},
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyCircle"></div>
+
+## 菱形
+
+菱形示例
+
+```js
+const n = {
+  x: 180,
+  y: 120,
+  shapes: nodes.diamond.shapes({ width: 120, height: 90 }, nodeStyle.normal),
+};
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyDiamond"></div>
+
+## 矩形
+
+矩形示例
+
+```js
+const n = {
+  x: 180,
+  y: 120,
+  shapes: nodes.rectangle.shapes({ width: 120, height: 90, radius: 9 }, nodeStyle.normal),
+};
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyRectangle"></div>

@@ -2,11 +2,12 @@ import type { MeshOptions } from "@pattaya/depict/graph";
 import type { NodeStyles } from "./styles";
 import type { Shapes } from "../../core";
 import { rectangle } from "impressionist";
+import type { Radius4 } from "impressionist/types/rectangle";
 
 export interface RectangleProps {
   width: number;
   height: number;
-  radius?: number;
+  radius?: number | Radius4;
   aligned?: boolean;
 };
 

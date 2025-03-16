@@ -1,0 +1,47 @@
+# Theme
+
+There are some prefab themes you can import directly.
+
+## Theme Usage
+
+```js
+import * as chaya from "@pattaya/pattaya/chaya";
+import { nodes } from "@pattaya/pattaya/components";
+
+const n = {
+  x: 180,
+  y: 220,
+  // the circle is decorated with chaya active styles.
+  shapes: nodes.circle.shapes({ radius: 64 }, chaya.nodes.active),
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+## mayk
+
+It's the default light theme with simple and clean colors.
+
+```js
+import * as mayk from "@pattaya/pattaya/mayk";
+```
+
+## chaya
+
+It's the default dark theme.
+
+```js
+import * as chaya from "@pattaya/pattaya/chaya";
+```
+
+## khin
+
+It's a light theme with shadow.
+
+```js
+import * as khin from "@pattaya/pattaya/khin";
+```
+
+## customize my own theme
+
+TODO
