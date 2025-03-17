@@ -1,0 +1,152 @@
+{
+  "i18n": {
+    "lang": "en",
+    "urlPrefix": "en",
+    "metaKeywords": "pattaya,graph,canvas,shape,event,render",
+    "metaDescription": "Pattaya: JavaScript library for modern interactive Graph",
+    "indexStart": "Get Started",
+    "indexGithub": "View on Github",
+    "indexTitle": "The JavaScript library for interactive Graph",
+    "indexDescription": "Pattaya focus on understanable, maintainable and performance. The primitives based design allows you to invest less and get more, build your own Graph, Now!",
+    "getback": "Get Back",
+    "docs": "Docs",
+    "version": "Version",
+    "playground": "Playground",
+    "github": "Github",
+    "roadmap": "Roadmap",
+    "theme": "Theme"
+  },
+  "pages": [
+    {
+      "id": "start",
+      "name": "Get Started",
+      "icon": "start",
+      "docs": [
+        {
+          "id": "introduction",
+          "name": "Introduction"
+        },
+        {
+          "id": "guide",
+          "name": "Quick Start"
+        },
+        {
+          "id": "themes",
+          "name": "Themes"
+        },
+        {
+          "id": "design",
+          "name": "Design Philosophy"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "icon": "components",
+      "name": "Components",
+      "docs": [
+        {
+          "id": "arrow",
+          "name": "Arrow"
+        },
+        {
+          "id": "circular",
+          "name": "Circular"
+        },
+        {
+          "id": "popup",
+          "name": "Popup"
+        },
+        {
+          "id": "nodes",
+          "name": "Nodes"
+        },
+        {
+          "id": "split",
+          "name": "Split"
+        },
+        {
+          "id": "line",
+          "name": "Line"
+        },
+        {
+          "id": "slider",
+          "name": "Slider"
+        },
+        {
+          "id": "toggle",
+          "name": "Toggle"
+        },
+        {
+          "id": "scale",
+          "name": "Scale"
+        },
+        {
+          "id": "tick",
+          "name": "Tick"
+        },
+        {
+          "id": "label",
+          "name": "Label"
+        }
+      ]
+    },
+    {
+      "id": "patterns",
+      "icon": "patterns",
+      "name": "Patterns",
+      "docs": [
+        {
+          "id": "stripe",
+          "name": "Stripe Pattern"
+        },
+        {
+          "id": "ring",
+          "name": "Ring Pattern"
+        },
+        {
+          "id": "grid",
+          "name": "Grid Pattern"
+        }
+      ]
+    },
+    {
+      "id": "examples",
+      "icon": "charts",
+      "name": "Build your own 100/20",
+      "docs": [
+        {
+          "id": "barchart",
+          "name": "Bar Chart"
+        },
+        {
+          "id": "callhierarchy",
+          "name": "Call Hierarchy"
+        },
+        {
+          "id": "button",
+          "name": "Button"
+        },
+        {
+          "id": "seperationchart",
+          "name": "Seperation Chart"
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "icon": "magic",
+      "name": "Advanced",
+      "docs": [
+        {
+          "id": "animation",
+          "name": "Animation"
+        },
+        {
+          "id": "performance",
+          "name": "Performance"
+        }
+      ]
+    }
+  ]
+}
