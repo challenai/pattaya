@@ -1,19 +1,19 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import theme from "../../theme";
 import { split } from "@pattaya/pattaya/components";
 
 const ident = "ptySegementSplit";
 
 const n1 = {
-  x: 200,
+  x: 160,
   y: 100,
-  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, radius: 5, vertical: false }, theme.ptr.split.normal),
+  shapes: split.segement.shapes({ offsets: [40, 80, 120, 160], width: 200, height: 40, radius: 5, vertical: false }, theme.ptr.split.normal),
 };
 
 const n2 = {
   x: 480,
   y: 100,
-  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, vertical: false }, theme.ptr.split.active),
+  shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 200, height: 40, vertical: false }, theme.ptr.split.active),
 };
 
 const graph = new Graph();

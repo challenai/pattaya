@@ -1,7 +1,8 @@
-import type { ShadowElement, TextOptions } from "@pattaya/depict/graph";
-import { Graph } from "@pattaya/depict/graph";
+import type { ShadowElement, TextOptions } from "@challenai/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import { nodes } from "@pattaya/pattaya/components";
-import { animationRunning, newAnimationStore, startAnimation, updateAnimation, rectContain } from "@pattaya/pattaya/core";
+import { rectContain } from "@pattaya/pattaya/core";
+import { animationRunning, easing, newAnimationStore, startAnimation, updateAnimation } from "@pattaya/pattaya/animation";
 
 export interface TextStyles {
   textColor: string;
@@ -49,7 +50,7 @@ export function TextButton(x: number, y: number, { radius, styles, text, textBou
     shapes: nodes.rectangle.shapes({ width, height, radius }, styles.normal),
     contain,
     texts: [buttonText],
-    data: { animation: newAnimationStore(styles.normal) },
+    data: { animation: newAnimationStore(styles.normal, easing.easeOut) },
     update(ts: number) {
       if (animationRunning(this.data.animation)) {
         const result = updateAnimation<TextButtonStyles>(this.data.animation, ts);

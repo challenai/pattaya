@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import { drawCircular } from "@pattaya/pattaya/patterns";
 
 import theme from "../../theme";
@@ -16,7 +16,7 @@ const n = {
       margin: 9,
       offsetX: -20,
       offsetY: -20,
-      lineColor: theme.ptr.pattern.active.color,
+      lineColor: theme.ptr.line.active.color,
     });
   }
 };

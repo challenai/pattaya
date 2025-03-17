@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import { drawGrid } from "@pattaya/pattaya/patterns";
 
 import theme from "../../theme";
@@ -17,7 +17,7 @@ const n = {
       marginY: 9,
       offsetX: 3.5,
       offsetY: 5.5,
-      lineColor: theme.ptr.pattern.active.color,
+      lineColor: theme.ptr.line.active.color,
     });
   }
 };

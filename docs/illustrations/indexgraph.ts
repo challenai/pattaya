@@ -1,9 +1,10 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import callhierarchy from "./callhierarchy";
 import sector from "./circular/sector";
 import popup from "./popup";
+import scale from "./scale";
+import tick from "./tick";
 import ring from "./patterns/ring";
-import diamond from "./nodes/diamond";
 
 const ident = "ptyIndexGraph";
 
@@ -13,30 +14,35 @@ graph.onReady(() => {
   graph.updateLayerOptions(1, { dynamic: true });
   const staticLayer = [
     {
-      x: -480,
-      y: 120,
+      x: -150,
+      y: 150,
+      children: tick.axis.layers,
+    },
+    {
+      x: 60,
+      y: 420,
       children: sector.layers,
     },
     {
-      x: 360,
-      y: -60,
-      children: popup.layers,
+      x: -160,
+      y: 160,
+      children: popup.hover.layers,
     },
     {
-      x: 300,
-      y: 180,
+      x: -20,
+      y: 50,
+      children: scale.multiple.layers,
+    },
+    {
+      x: 240,
+      y: 280,
       children: ring.layers,
-    },
-    {
-      x: 100,
-      y: 260,
-      children: diamond.layers,
     },
   ];
   const dynamicLayer = [
     {
       x: -100,
-      y: 0,
+      y: 420,
       children: callhierarchy.layers
     },
   ];
@@ -46,9 +52,10 @@ graph.onReady(() => {
 function applyTheme() {
   callhierarchy.applyTheme();
   sector.applyTheme();
-  popup.applyTheme();
+  popup.hover.applyTheme();
+  scale.multiple.applyTheme();
+  tick.axis.applyTheme();
   ring.applyTheme();
-  diamond.applyTheme();
   graph.renderAll();
 }
 

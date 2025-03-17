@@ -1,6 +1,7 @@
-import { Graph, type Text, type ShadowElement } from "@pattaya/depict/graph";
+import { Graph, type Text, type ShadowElement } from "@challenai/depict/graph";
 import { edge, nodes, popup } from "@pattaya/pattaya/components";
-import { animationRunning, newAnimationStore, startAnimation, updateAnimation, rectContain } from "@pattaya/pattaya/core";
+import { rectContain } from "@pattaya/pattaya/core";
+import { animationRunning, easing, newAnimationStore, startAnimation, updateAnimation } from "@pattaya/pattaya/animation";
 
 export const background = "#fff";
 
@@ -54,7 +55,7 @@ function Bar(x: number, y: number, width: number, height: number): ShadowElement
     x,
     y,
     shapes: nodes.rectangle.shapes({ width, height }, barStyles.normal),
-    data: { animation: newAnimationStore(barStyles.normal) },
+    data: { animation: newAnimationStore(barStyles.normal, easing.easeOut) },
     update(ts: number) {
       if (animationRunning(this.data.animation)) {
         const result = updateAnimation<nodes.NodeStyles>(this.data.animation, ts);
