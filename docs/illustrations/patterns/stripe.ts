@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import { drawStripe } from "@pattaya/pattaya/patterns";
 
 import theme from "../../theme";
@@ -16,7 +16,7 @@ const n = {
       margin: 9,
       offset: -100,
       segements: [10, 6],
-      lineColor: theme.ptr.pattern.active.color,
+      lineColor: theme.ptr.line.active.color,
     });
   }
 };

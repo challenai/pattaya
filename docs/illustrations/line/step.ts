@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import theme from "../../theme";
 import { line } from "@pattaya/pattaya/components";
 
@@ -10,14 +10,14 @@ const n = {
   shapes: line.step.shapes({
     pathes: [130, -50, 120, -50, 90, 140, 140, -150],
     radius: 9
-  }, theme.ptr.line.normal),
+  }, theme.ptr.line.active),
 };
 
 const graph = new Graph();
 graph.onReady(() => graph.resetGraph([[n]]));
 
 function applyTheme() {
-  line.step.applyStyle(n.shapes, theme.ptr.line.normal);
+  line.step.applyStyle(n.shapes, theme.ptr.line.active);
   graph.renderAll();
 }
 

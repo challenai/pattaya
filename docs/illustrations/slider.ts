@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import theme from "../theme";
 import { slider } from "@pattaya/pattaya/components";
 
@@ -8,7 +8,7 @@ const sliderProps = { totalLength: 200, progress: .62, barWidth: 3, slideWidth: 
 const n = {
   x: 240,
   y: 130,
-  shapes: slider.basic.shapes(sliderProps, theme.ptr.slider.normal),
+  shapes: slider.basic.shapes(sliderProps, theme.ptr.slider),
   contain(x: number, y: number) {
     return x > 0 && x < sliderProps.totalLength && y > -10 && y < 10;
   },
@@ -23,7 +23,7 @@ const graph = new Graph();
 graph.onReady(() => graph.resetGraph([[n]]));
 
 function applyTheme() {
-  slider.basic.applyStyle(n.shapes, theme.ptr.slider.normal);
+  slider.basic.applyStyle(n.shapes, theme.ptr.slider);
   graph.renderAll();
 }
 

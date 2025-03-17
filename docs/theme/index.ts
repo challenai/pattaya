@@ -1,3 +1,3 @@
-import * as chaya from "@pattaya/pattaya/chaya";
+import chaya from "@pattaya/pattaya/chaya";
 
-export default { ptr: chaya };
+export default { ptr: chaya.theme };

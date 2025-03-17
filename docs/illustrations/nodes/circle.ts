@@ -1,4 +1,4 @@
-import { Graph } from "@pattaya/depict/graph";
+import { Graph } from "@challenai/depict/graph";
 import theme from "../../theme";
 import { nodes } from "@pattaya/pattaya/components";
 

@@ -1,4 +1,4 @@
-import { Graph, ShadowElement } from "@pattaya/depict/graph";
+import { Graph, type ShadowElement } from "@challenai/depict/graph";
 import { rectContain } from "@pattaya/pattaya/core";
 import { edge, nodes } from "@pattaya/pattaya/components";
 import theme from "../theme";
