@@ -1,0 +1,69 @@
+# Scale
+
+## Basic
+
+Example of a basic scale.
+
+```js
+const width = 130;
+
+const frags = scale.blueprint.fragments({ width, height: 16, padding: 5, space: 42, arrowSize: 7, vertical: false }, theme.scale.active);
+
+const n = {
+  x: 0,
+  y: 0,
+  children: frags.elements,
+  texts: [
+    {
+      x: width / 2,
+      content: "20px",
+      opts: textOpts,
+    },
+  ],
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyScaleBasic"></div>
+
+## Multiple
+
+Example of a scale with multiple segements.
+
+```js
+const frags2 = scale.multiple.fragments({ segements: [{ width: 130, space: 36 }, { width: 90, space: 36 }], height: 16, padding: 5, arrowSize: 7, vertical: true }, theme.scale.active);
+const n = {
+    x: 0,
+    y: 0,
+    texts: [
+        {
+            y: 130 / 2,
+            content: "54cm",
+            opts: {
+                ...textOpts,
+                width: 42,
+                fill: "#8ac"
+            }
+        },
+        {
+            y: 130 + 90 / 2,
+            content: "32cm",
+            opts: {
+                ...textOpts,
+                width: 42,
+                fill: "#8ac"
+            }
+        }
+    ],
+    children: frags.elements,
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyScaleMultiple"></div>
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.

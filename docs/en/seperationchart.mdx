@@ -1,0 +1,18 @@
+# Seperation Chart
+
+The seperation chart demo shows you how to build the graph by popular **state-driven**.  
+
+## State-Driven Chart
+
+Example of a seperation chart.
+
+When we hover the color chunk, the state will be changed, the index of active chunk will be set.  
+The text and color of label will be update later in the **`update: (timestamp: number) => void`** callback.
+The state in this example is `state = { active = -1, x = 0, y = 0 }`, the active means currently active chunk index.  
+
+You can build this state-driven example in just 154 lines of code, styles and mock data included,   
+that's the title `build your own xxx in 100 lines of code and 20 minutes`, maintainable, productive and practical so that you can build more features.
+
+<div id="ptySeperationChart"></div>
+
+You can find the source code here: [pattaya/docs/illustrations/seperationchart.ts](https://github.com/challenai/pattaya/blob/main/docs/illustrations/seperationchart.ts)

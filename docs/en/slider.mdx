@@ -8,9 +8,9 @@ Example of a slider controlled by click.
 
 ```js
 const sliderProps = { totalLength: 200, progress: .62, barWidth: 3, slideWidth: 3, radius: 6 };
-const n: ShadowElement = {
-  x: 181,
-  y: 123,
+const n = {
+  x: 0,
+  y: 0,
   shapes: slider.basic.shapes(sliderProps, styles.normal),
   contain(x: number, y: number) {
     return x > 0 && x < sliderProps.totalLength && y > -10 && y < 10;

@@ -1,5 +1,41 @@
 # Performance
 
-It's not necessary to care too much about performance at the most of the time, there are some suggestions.
+In most cases, performance in Pattaya isn't a primary concern. However, here are some suggestions to improve it when necessary.
 
-TODO
+## Eliminate Unnecessary Updates
+
+Most value assignments in JavaScript (e.g., number assignments, shallow object copies) are extremely fast.  
+If your application has too many update callbacks, try to eliminate unnecessary branches.  
+
+On the other hand, in many cases, you can update states and properties directly.  
+Rather than overthinking optimizations, using a brute-force approach often results in sufficiently fast performance.  
+
+## Use Animations, But Don't Animate Everything
+
+Avoid excessive animations.  
+While modern rendering engines can handle thousands of animations in a single graph,  
+too many animations may introduce unnecessary overhead and degrade performance.  
+
+## Cache Constant Objects
+
+When using gradient colors or patterns to decorate elements,
+avoid recreating them each time—cache them instead, either in a store or directly in `element.data`.
+
+If an object requires significant computation or memory, cache it when necessary.
+
+## Handling 10,000+ Nodes
+
+Depict and Pattaya are not designed for extremely large-scale graphs.   
+They are optimized for interactive diagrams such as UML, charts, dashboards, and dynamic UIs,  
+typically handling 50 to 500 nodes efficiently.  
+
+While the engine can support a few thousand nodes, the exact limit depends on factors such as animations, shape complexity, text rendering, and the selected renderer.   
+For rendering at a much larger scale, consider using WebGL or WebGPU-based solutions.  
+
+## Avoid Manually Creating Shapes
+
+Calling `ctx.drawXX` repeatedly during re-renders is inefficient.
+Instead, batch your operations and generate an operation string to optimize rendering.
+
+For example, if you only need to change colors or line widths, you don't need to recalculate sector angles and arcs every time.
+Manually caching drawing operations—especially for gradient colors and patterns—can significantly improve performance.

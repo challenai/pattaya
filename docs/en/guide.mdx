@@ -1,6 +1,6 @@
 # Quick Start
 
-Pattaya can be built with any framework, from Vue, React, Svelte, web components, to Vanilla Javascript or even electron and Webview.  
+Pattaya can be built with any framework, from Vue, React, Svelte, web components, to Vanilla Javascript or even Electron and Webview.  
 
 ## Install
 
@@ -8,7 +8,7 @@ Pattaya choose the Depict to handle events and actual render,
 so you need to install Depict to run the Pattaya application.
 
 ```bash
-npm install @pattaya/depict --save
+npm install @challenai/depict --save
 ```
 
 Install Pattaya from npm source.
@@ -23,16 +23,16 @@ Here is an example to run Pattaya in React.
 
 > you can find more examples with other frameworks in Depict Github repo.
 
-```tsx
-import { NonWorkerDepict } from "@pattaya/depict/nonworker";
-import { Graph } from "@pattaya/depict/graph";
+```ts
+import { NonWorkerDepict } from "@challenai/depict/nonworker";
+import { Graph } from "@challenai/depict/graph";
 import { nodes } from "@pattaya/pattaya/components";
-import { mayk } from "@pattaya/pattaya/themes";
+import mayk from "@pattaya/pattaya/mayk";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
   const rootRef = useRef<HTMLDivElement>(null);
-  const [graph, setGraph] = useState<NonWorkerDepict | undefined>(undefined);
+  const [graph, setGraph] = useState<NonWorkerDepict | undefined>();
 
   useEffect(() => {
     let g = graph;
@@ -50,7 +50,7 @@ function App() {
       g.graph.resetGraph([[{
         x: 240,
         y: 130,
-        shapes: nodes.circle.shapes({ radius: 48 }, mayk.nodes.normal),
+        shapes: nodes.circle.shapes({ radius: 48 }, mayk.theme.nodes.normal),
       }]])
     }
     return () => g?.destroy();
@@ -67,4 +67,110 @@ function App() {
     ></div>
   );
 }
+```
+
+## Run Pattaya in Vue 
+
+Here is an example to run Pattaya in Vue.
+
+```vue
+<script lang="ts">
+import { defineComponent, onMounted, ref, watch } from 'vue';
+import { NonWorkerDepict } from "@challenai/depict/nonworker";
+import { Graph } from "@challenai/depict/graph";
+import { nodes } from "@pattaya/pattaya/components";
+import mayk from "@pattaya/pattaya/mayk";
+
+export default defineComponent({
+  name: "Graph",
+  setup(props) {
+    const rootRef = ref<HTMLDivElement>()
+    const depict = ref<NonWorkerDepict | undefined>(undefined)
+
+    onMounted(() => {
+      if (!depict.value) {
+        if (!rootRef.value) return
+        depict.value = new NonWorkerDepict({
+          root: rootRef.value,
+          maxLayers: 1,
+          graph: new Graph(),
+        });
+        depict.value.start();
+        depict.value.graph.resetGraph([[{
+          x: 240,
+          y: 130,
+          shapes: nodes.circle.shapes({ radius: 48 }, mayk.theme.nodes.normal),
+        }]]);
+      }
+    })
+
+    return {
+      rootRef,
+    }
+  }
+})
+
+</script>
+
+<template>
+  <div class="graph" ref="rootRef"></div>
+</template>
+
+<style scoped>
+.graph {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  border: 1px solid #333;
+  border-radius: 20px;
+}
+</style>
+```
+
+## Run Pattaya in Svelte 
+
+Here is an example to run Pattaya in Svelte.
+
+```svelte
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { NonWorkerDepict } from "@challenai/depict/nonworker";
+  import { Graph } from "@challenai/depict/graph";
+  import { nodes } from "@pattaya/pattaya/components";
+  import mayk from "@pattaya/pattaya/mayk";
+
+  let depict: NonWorkerDepict | undefined = $state(undefined);
+  let rootRef: HTMLDivElement | undefined;
+
+  onMount(() => {
+    if (!depict) {
+      if (!rootRef) return;
+      depict = new NonWorkerDepict({
+        root: rootRef,
+        maxLayers: 1,
+        graph: new Graph(),
+      });
+      depict.start();
+      depict.graph.resetGraph([[{
+        x: 240,
+        y: 130,
+        shapes: nodes.circle.shapes({ radius: 48 }, mayk.theme.nodes.normal),
+      }]]);
+    }
+
+    return () => depict?.destroy();
+  });
+</script>
+
+<div class="graph" bind:this={rootRef}></div>
+
+<style>
+  .graph {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    border: 1px solid #333;
+    border-radius: 20px;
+  }
+</style>
 ```

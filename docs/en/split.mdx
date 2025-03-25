@@ -7,9 +7,9 @@ Split the background to Segements, Grids
 Example of a segement.
 
 ```js
-const n1 = {
-  x: 200,
-  y: 100,
+const n = {
+  x: 0,
+  y: 0,
   shapes: split.segement.shapes({ offsets: [10, 26, 48, 68, 96], width: 148, height: 40, radius: 5, vertical: false }, theme.split.normal),
 };
 graph.updateQueue(0, [[n]]);
@@ -23,8 +23,8 @@ Example of a grid.
 
 ```js
 const n = {
-  x: 200,
-  y: 100,
+  x: 0,
+  y: 0,
   shapes: split.grid.shapes({
     width: 196, height: 128, radius: 5, vertical: false,
     units: [
