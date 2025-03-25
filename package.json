@@ -1,7 +1,7 @@
 {
   "name": "@pattaya/pattaya",
   "module": "lib/index.min.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "exports": {
     ".": {
@@ -102,6 +102,13 @@
     "type": "git",
     "url": "git+https://github.com/challenai/pattaya.git"
   },
+  "keywords": [
+    "graph",
+    "charts",
+    "canvas",
+    "uml",
+    "visualization"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsc && esbuild dist/**/*.js --bundle --minify --format=esm --outdir=lib/ --out-extension:.js=.min.js",
