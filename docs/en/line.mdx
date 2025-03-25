@@ -8,8 +8,8 @@ Example of a simple line.
 
 ```js
 const n = {
-  x: 180,
-  y: 120,
+  x: 0,
+  y: 0,
   shapes: line.basic.shapes({
     start: { x: 20, y: 20 }, 
     end: { x: 200, y: 180 },
@@ -27,8 +27,8 @@ Example of a quadratic bezier curve.
 
 ```js
 const n = {
-  x: 120,
-  y: 100,
+  x: 0,
+  y: 0,
   shapes: line.quadratic.shapes([
     { x: 20, y: 20 },
     { x: 60, y: 40 },
@@ -49,8 +49,8 @@ Example of a cubic bezier curve.
 
 ```js
 const n = {
-  x: 100,
-  y: 120,
+  x: 0,
+  y: 0,
   shapes: line.cubic.shapes([
     { x: 20, y: 60 },
     { x: 60, y: -20 },
@@ -74,8 +74,8 @@ Example of a fold line.
 
 ```js
 const n = {
-  x: 100,
-  y: 120,
+  x: 0,
+  y: 0,
   shapes: line.fold.shapes([
     { x: 20, y: 60 },
     { x: 60, y: -20 },
@@ -99,8 +99,8 @@ Example of a step line.
 
 ```js
 const n = {
-  x: 120,
-  y: 220,
+  x: 0,
+  y: 0,
   shapes: line.step.shapes({
     pathes: [130, -50, 120, -50, 90, 140, 140, -150],
     radius: 9

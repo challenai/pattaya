@@ -8,14 +8,65 @@ Example of a basic popup.
 
 ```js
 const n = {
-  x: 180,
-  y: 120,
+  x: 0,
+  y: 0,
   shapes: popup.blueprint.shape({ width: 120, height: 75, radius: 9, triangleWidth: 18, triangleHeight: 10 }, popupStyle.normal),
 };
 graph.updateQueue(0, [[n]]);
 ```
 
 <div id="ptyPopup"></div>
+
+## Trigger Popup
+
+Example of a popup triggered by hovering text.
+
+```js
+const hint = {
+  x: 480,
+  y: 160,
+  shapes: popup.blueprint.shapes({ width: 120, height: 75, radius: 9, triangleWidth: 18, triangleHeight: 10, aligned: false }, theme.popup),
+  texts: [{
+    x: 0,
+    y: -40,
+    content: "Hi, there",
+    opts: {
+      fill: theme.text.normal.color,
+      font: "14px Arial",
+      textAlign: "center",
+    },
+  }],
+  hidden: true
+};
+
+const text = {
+  x: 480,
+  y: 180,
+  contain: rectContain(80, 40),
+  texts: [{
+    content: "Hover me!",
+    opts: {
+      width: 80,
+      height: 40,
+      fill: theme.text.active.color,
+      font: "14px Arial",
+      textAlign: "center",
+    },
+  }],
+  onMouseenter(render) {
+    render();
+    hint.hidden = false;
+  },
+  onMouseleave(render) {
+    render();
+    hint.hidden = true;
+  }
+};
+
+graph.updateQueue(0, [[hint, text]]);
+```
+
+<div id="ptyPopupHover"></div>
 
 ## API
 

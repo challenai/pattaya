@@ -1,0 +1,62 @@
+# Tick
+
+## Basic
+
+Example of a basic tick.
+
+```js
+const ts = tick.blueprint.fragments({ count: 5, margin: 60, offset: 5, baseline: 0, vertical: false }, theme.tick);
+
+graph.updateQueue(0, [[{ x: 0, y: 0, children: ts.elements }]]);
+```
+
+<div id="ptyTickBasic"></div>
+
+## Axis
+
+Example of a 2D axis with tick.
+
+```js
+const tickTexts0: Text[] = [0, 1, 2, 3, 4, 5, 6, 7].map((item, idx) => ({
+  x: idx * 60,
+  y: 16,
+  content: `${item}`,
+}));
+
+const tickTexts1: Text[] = [10, 15, 20, 25, 30, 35].map((item, idx) => ({
+  x: -9,
+  y: -idx * 36,
+  content: `${item}`,
+}));
+
+const tick0 = tick.blueprint.fragments({ count: 8, margin: 60, offset: 5, baseline: 180 }, { borderTick: "#8ac", borderBaseline: "rgba(100, 100, 100, .35)" });
+
+const tick1 = tick.blueprint.fragments({ count: 6, margin: 36, offset: -5, vertical: true, baseline: 420 }, { borderTick: "#8ac", borderBaseline: "rgba(100, 100, 100, .35)" });
+
+const n = {
+  x: 0,
+  y: 0,
+  children: [
+    {
+      x: 0,
+      y: 0,
+      texts: tickTexts0,
+      children: tick0.elements,
+    },
+    {
+      x: 0,
+      y: 0,
+      texts: tickTexts1,
+      children: tick1.elements,
+    }
+  ],
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyTickAxis"></div>
+
+## API
+
+See the documentation below for a complete reference to all of the props and classes available to the components mentioned here.

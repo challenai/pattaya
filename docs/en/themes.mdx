@@ -5,14 +5,14 @@ There are some prefab themes you can import directly.
 ## Theme Usage
 
 ```js
-import * as chaya from "@pattaya/pattaya/chaya";
+import chaya from "@pattaya/pattaya/chaya";
 import { nodes } from "@pattaya/pattaya/components";
 
 const n = {
-  x: 180,
-  y: 220,
+  x: 0,
+  y: 0,
   // the circle is decorated with chaya active styles.
-  shapes: nodes.circle.shapes({ radius: 64 }, chaya.nodes.active),
+  shapes: nodes.circle.shapes({ radius: 64 }, chaya.theme.nodes.active),
 };
 
 graph.updateQueue(0, [[n]]);
@@ -23,7 +23,7 @@ graph.updateQueue(0, [[n]]);
 It's the default light theme with simple and clean colors.
 
 ```js
-import * as mayk from "@pattaya/pattaya/mayk";
+import mayk from "@pattaya/pattaya/mayk";
 ```
 
 ## chaya
@@ -31,7 +31,7 @@ import * as mayk from "@pattaya/pattaya/mayk";
 It's the default dark theme.
 
 ```js
-import * as chaya from "@pattaya/pattaya/chaya";
+import chaya from "@pattaya/pattaya/chaya";
 ```
 
 ## khin
@@ -39,9 +39,48 @@ import * as chaya from "@pattaya/pattaya/chaya";
 It's a light theme with shadow.
 
 ```js
-import * as khin from "@pattaya/pattaya/khin";
+import khin from "@pattaya/pattaya/khin";
 ```
 
-## customize my own theme
+## Customize Your Own Theme
 
-TODO
+You can set your styles as follows:
+
+```js
+const nodeStyles = {
+  border: "#000",
+  background: "#aaa",
+}
+```
+
+You can set all the styles of components to build a theme;
+
+```js
+const nodeStyles = {...};
+const splitStyles = {...};
+// ...
+
+const theme = {node: nodeStyles, split: splitStyles, ...};
+```
+
+If you have some base styles for the theme, you can derive from them:
+
+```js
+const baseStyles = {
+  line: "#222",
+  lineWidth: 1,
+  border: "#000",
+  background: "#aaa",
+  fontColor: "#000";
+};
+
+const theme = deriveTheme(baseStyles);
+```
+
+And you can modify it to personalize your theme.
+
+```js
+const mySpecialTheme = deriveTheme(baseStyles);
+
+mySpecialTheme.theme.node.background = "#abc";
+```
