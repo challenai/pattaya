@@ -1,3 +1,3 @@
 export interface ScaleStyles {
-  border?: string;
-};
+    border?: string;
+}

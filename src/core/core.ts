@@ -1,9 +1,9 @@
 import type { Mesh, Text } from "@challenai/depict/graph";
 
 export interface Fragment {
-  x: number;
-  y: number;
-  shapes: Shapes;
+    x: number;
+    y: number;
+    shapes: Shapes;
 }
 
 export type Fragments = Fragment[];

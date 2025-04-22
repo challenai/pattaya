@@ -1,3 +1,3 @@
 export interface TextStyles {
-  color: string;
-};
+    color: string;
+}

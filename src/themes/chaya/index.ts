@@ -5,7 +5,7 @@ import palette from "./palette";
 const theme = deriveTheme(base);
 
 export default {
-  palette,
-  base,
-  theme
+    palette,
+    base,
+    theme,
 };
