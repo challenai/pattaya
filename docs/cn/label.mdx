@@ -1,0 +1,92 @@
+# 标签
+
+## 基本
+
+基本标签示例
+
+```js
+const offsetX = 24;
+const offsetY = -32;
+const underline = 64;
+
+const n = {
+  x: 300,
+  y: 160,
+  shapes: label.blueprint.shapes(
+    { offsetX, offsetY, underline },
+    theme.label.active
+  ),
+  texts: [
+    {
+      x: offsetX + underline / 2,
+      y: offsetY - 12,
+      content: "hello, world",
+      opts: {
+        textAlign: "center",
+      },
+    },
+  ],
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyLabel"></div>
+
+## 触发显示和隐藏标签
+
+悬浮文本显示标签
+
+```js
+const offsetX = 24;
+const offsetY = -32;
+const underline = 64;
+
+const hint = {
+  x: 300,
+  y: 160,
+  shapes: label.blueprint.shapes(
+    { offsetX, offsetY, underline },
+    theme.label.active
+  ),
+  texts: [
+    {
+      x: offsetX + underline / 2,
+      y: offsetY - 12,
+      content: "hello, world",
+      opts: {
+        textAlign: "center",
+      },
+    },
+  ],
+  hidden: true,
+};
+
+const text = {
+  x: 300,
+  y: 180,
+  contain: rectContain(80, 40),
+  texts: [
+    {
+      content: "Hover me!",
+      opts: {
+        width: 80,
+        height: 40,
+        textAlign: "center",
+      },
+    },
+  ],
+  onMouseenter(render) {
+    hint.hidden = false;
+    render();
+  },
+  onMouseleave(render) {
+    hint.hidden = true;
+    render();
+  },
+};
+
+graph.updateQueue(0, [[hint, text]]);
+```
+
+<div id="ptyLabelHover"></div>
