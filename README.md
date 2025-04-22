@@ -1,7 +1,7 @@
 # Pattaya
 
 **Pattaya** is a modern JavaScript graphics library designed for simplicity, flexibility, and performance.  
-It provides **primitives** such as lines, squares, and bubbles instead of a predefined charts with too many parameters, allowing you to create custom graphics effortlessly.  
+It provides **primitives** such as lines, squares, and bubbles instead of a predefined charts with too many parameters, allowing you to create custom graphics effortlessly.
 
 Whether you're building **data visualizations, diagrams, architectural drawings, or UI components**, Pattaya is the lightweight solution you need.
 
@@ -24,17 +24,20 @@ npm install @pattaya/pattaya
 ```js
 // a popup
 const n = {
-    x: 10,
-    y: 20,
-    shapes: popup.blueprint.shape({
-        width: 120,
-        height: 75,
-        radius: 9,
-        triangleWidth: 18,
-        triangleHeight: 10,
-    }, {
-        border: "#000"
-    }),
+  x: 10,
+  y: 20,
+  shapes: popup.blueprint.shape(
+    {
+      width: 120,
+      height: 75,
+      radius: 9,
+      triangleWidth: 18,
+      triangleHeight: 10,
+    },
+    {
+      border: "#000",
+    }
+  ),
 };
 
 // render it
