@@ -1,0 +1,34 @@
+# 切换
+
+## 基本的切换
+
+基本的切换示例如下:
+
+```js
+const width = 50;
+const height = 30;
+
+const n = {
+  x: 0,
+  y: 0,
+  data: false,
+  shapes: toggle.blueprint.shapes(
+    { width, height, radius: 10, active: false },
+    theme.toggle.normal
+  ),
+  contain: rectContain(width, height, false),
+  onClick(render) {
+    this.data = !this.data;
+    const styles = this.data ? theme.toggle.active : theme.toggle.normal;
+    this.shapes = toggle.blueprint.shapes(
+      { width, height, radius: 10, active: this.data },
+      styles
+    );
+    render();
+  },
+};
+
+graph.updateQueue(0, [[n]]);
+```
+
+<div id="ptyToggle"></div>
