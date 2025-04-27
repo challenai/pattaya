@@ -1,0 +1,16 @@
+# 占比示例
+
+这个示例图展示了如何构建 **状态驱动** 的图形。
+
+## 状态驱动
+
+当我们悬浮在某个块上面的时候，状态发生了改变，活跃块的索引会被更新。
+文本和颜色会在随后的 **`update: (timestamp: number) => void`** 回调中更新。
+这个例子中的状态是 `state = { active = -1, x = 0, y = 0 }`, 这个 `active` 表示活跃块的索引。
+
+你可以使用 154 行代码构建这个状态驱动的示例，包括样式和 mock 的数据。
+这就是标题的含义 `在 100 行和 20 分钟内构建你的 xx 应用`，高效，可维护，实用。因此你可以构建更复杂和庞大的应用而不用担心维护不了。
+
+<div id="ptySeperationChart"></div>
+
+你可以在这里找到代码: [pattaya/docs/illustrations/seperationchart.ts](https://github.com/challenai/pattaya/blob/main/docs/illustrations/seperationchart.ts)

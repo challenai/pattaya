@@ -1,5 +1,140 @@
-# Animation
+# 动画
 
-Add some well designed animations to build stunning graph.
+为你的图形添加一个设计良好的动画。
 
-TODO
+## 指引
+
+基本上一个动画是由 2 个帧之间的切换组成。
+简单来说，就像是一个方框从 200 长度转换到 300 长度，这个过程持续 200 ms。
+你会创建一个动画，初始长度为 200。
+当你开始动画时，动画持续时间被设置为 200 ms，最终长度是 300。
+当动画运行时，通过 `updateAnimation` 你会持续获得中间的插值。
+
+在 animtion 目录，我们暴露了一个简单的 动画 API。
+但是 Pattaya 的其他部分完全不依赖于动画 API。
+因此你可以随意使用你喜欢的第三方的动画库来集成替换默认的动画。
+同时，根据最小化依赖的策略，如果您不使用内置的动画 API，他们不会被打包进你的应用。
+
+### 1. 创建动画
+
+给定一些初始值来创建一个动画。
+
+```js
+// state1 => state2
+// or: state2 => state1
+const state1 = { width: 200 };
+const state2 = { width: 300 };
+
+// easeInOut is easing function control the animation intermediate state
+// it's like the CSS ease-in, ease-out, ease-in-out...
+const ani = newAnimationStore(state1, easing.easeInOut),
+```
+
+### 2. 开始动画
+
+当用户点击按钮或者计时器结束时，你可以开始动画
+动画有一个初始状态和一个结束状态。
+
+```js
+onClick() {
+  // start the animation, hope it will last 200ms, and it will finally change to state2
+  startAnimation(ani, 200, state2);
+}
+```
+
+### 3. 更新动画和图
+
+当你的图形需要重新渲染，或者每帧都需要重新渲染时。
+你可以根据动画更新图形。
+
+大多数情况下，可以在 `Update` 回调中更新图形。
+外部更新也是可行的，但是外部更新可能不会严格在下一帧到来之前完成，所以需要手动控制。
+
+使用 `setInterval` 来定时更新是不推荐的。因为中间状态不会立刻重渲染，虽然他仍然生效，但是会浪费 CPU 资源。
+
+```js
+update(timestamp) {
+  // ani is our animation, you can get it from your code, or you can store it in data field of the element (get it from "this.data").
+  const currentState = updateAnimation(ani, timestamp);
+  // state now: width could be between (200, 300), for example: 280
+  // you can set the width of a rectangle to 280 to render the animation
+  console.log(currentState.width);
+}
+```
+
+### 4. 检查动画状态
+
+有时候，你可能想知道动画是否结束了
+
+```js
+// running ?
+console.log(animationRunning(ani));
+// finished ?
+console.log(animationCompleted(ani));
+```
+
+## Example
+
+```js
+const mutedStyle = {
+  color: "rgba(200, 200, 200, 1)",
+  fontColor: "rgba(100, 100, 100, 1)",
+  scale: 0.9,
+};
+
+const activeStyle = {
+  color: "rgba(255, 255, 255, 1)",
+  fontColor: "rgba(20, 20, 20, 1)",
+  scale: 1.0,
+};
+
+const n: ShadowElement = {
+  x: 240,
+  y: 120,
+  shapes: [
+    {
+      path: nodes.rectangle.wireframe({ width: 160, height: 60, radius: 6 }),
+      opts: {
+        fill: mutedStyle.color,
+        scale: mutedStyle.scale,
+        border: false,
+      },
+    },
+  ],
+  contain: rectContain(160, 60),
+  data: newAnimationStore(mutedStyle, easing.easeInOut),
+  texts: [
+    {
+      content: "Search",
+      opts: {
+        fill: mutedStyle.fontColor,
+        font: "16px Arial",
+        textAlign: "center",
+        textBaseline: "middle",
+      },
+    },
+  ],
+  update(ts) {
+    const current = updateAnimation(this.data, ts);
+    const opts = this.shapes[0].opts;
+    const textOpts = this.texts[0].opts;
+    opts.fill = current.color;
+    opts.scale = current.scale;
+    textOpts.fill = current.fontColor;
+  },
+  onMouseenter(render) {
+    startAnimation(this.data, 250, activeStyle);
+  },
+  onMouseleave(render) {
+    startAnimation(this.data, 250, mutedStyle);
+  },
+};
+
+const graph = new Graph();
+graph.onReady(() => {
+  graph.updateLayerOptions(0, { dynamic: true, update: true });
+  graph.resetGraph([[n]]);
+});
+```
+
+<div id="ptyAnimationButton"></div>
