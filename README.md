@@ -50,6 +50,6 @@ Pattaya is licensed under the **MIT License**.
 
 ## 💡 Explore Pattaya:
 
-- [Documentation](https://pattaya.depict.wiki/en/introduction/)
-- [Quick Start](https://pattaya.depict.wiki/en/guide/)
-- [Design Philosophy](https://pattaya.depict.wiki/en/design/)
+- [Documentation](https://pattaya.challenai.com/en/introduction/)
+- [Quick Start](https://pattaya.challenai.com/en/guide/)
+- [Design Philosophy](https://pattaya.challenai.com/en/design/)
